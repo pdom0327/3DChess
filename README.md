@@ -1,2 +1,4 @@
 # 3DChess
 Create 3D Chess connection with SpringBoot 
+
+졸업프로젝트ll 3D체스 제작을 위한 레포지토리
