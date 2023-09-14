@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Piece : MonoBehaviour
+public class BoardCell : MonoBehaviour
 {
-    public string id;
+    public GameObject piece;
     public int x;
     public int y;
+    [Space]
+    public bool canMove;
 }
