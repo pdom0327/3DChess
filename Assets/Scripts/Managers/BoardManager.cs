@@ -5,9 +5,9 @@ using UnityEngine;
 public class BoardManager : MonoBehaviour
 {
     public List<BoardCell> boardCells;
-    
+
     private Board _board;
-    
+
     private static BoardManager _instance = null;
 
     public static BoardManager Instance
@@ -21,4 +21,13 @@ public class BoardManager : MonoBehaviour
             return _instance;
         }
     }
+
+    void Start()
+    {
+        _board = GetComponent<Board>();
+        
+        _board.CreateGrid();
+    }
+    
+    
 }

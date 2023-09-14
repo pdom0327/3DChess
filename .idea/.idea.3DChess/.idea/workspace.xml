@@ -6,8 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="3a16e4fa-f44f-42ef-b4d1-88d948fd37ab" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.3DChess/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.3DChess/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Board/Board.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Board/Board.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/BoardManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/BoardManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,7 +91,7 @@
       <workItem from="1694514114001" duration="1523000" />
       <workItem from="1694516940979" duration="8590000" />
       <workItem from="1694594131433" duration="10471000" />
-      <workItem from="1694680608838" duration="3746000" />
+      <workItem from="1694680608838" duration="4785000" />
     </task>
     <servers />
   </component>

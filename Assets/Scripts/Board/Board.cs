@@ -5,16 +5,14 @@ using UnityEngine;
 public class Board : MonoBehaviour
 {
     public GameObject boardCell;
-    private float _cellSize = 1.5f;
-    private float _borderLength = 5.25f;
+    private float _cellSize;
+    private float _borderLength;
 
     void Start()
     {
-        CreateGrid();
-        for (int i = 0; i < 64; i++)
-        {
-            Debug.Log(BoardManager.Instance.boardCells[i].x + ", " + BoardManager.Instance.boardCells[i].y);    
-        }
+        _cellSize = 1.5f;
+
+        _borderLength = 5.25f;
     }
 
     public void CreateGrid()
