@@ -1,33 +1,34 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BoardManager : MonoBehaviour
+namespace Managers
 {
-    public List<BoardCell> boardCells;
-
-    private Board _board;
-
-    private static BoardManager _instance = null;
-
-    public static BoardManager Instance
+    public class BoardManager : MonoBehaviour
     {
-        get
+        public List<BoardCell> boardCells;
+
+        private Board _board;
+
+        private static BoardManager _instance = null;
+
+        public static BoardManager Instance
         {
-            if (_instance == null)
+            get
             {
-                _instance = (BoardManager)FindObjectOfType(typeof(BoardManager));
+                if (_instance == null)
+                {
+                    _instance = (BoardManager)FindObjectOfType(typeof(BoardManager));
+                }
+                return _instance;
             }
-            return _instance;
+        }
+
+        void Start()
+        {
+            _board ??= GameObject.FindGameObjectWithTag(nameof(Board)).GetComponent<Board>();
+
+            _board.CreateGrid();
+            PieceManager.Instance.SettingPiece();
         }
     }
-
-    void Start()
-    {
-        _board = GetComponent<Board>();
-        
-        _board.CreateGrid();
-    }
-    
-    
 }

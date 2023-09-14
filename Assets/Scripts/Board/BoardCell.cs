@@ -5,8 +5,7 @@ using UnityEngine;
 public class BoardCell : MonoBehaviour
 {
     public GameObject piece;
-    public int x;
-    public int y;
+    public Vector2 cellPosition;
     [Space]
     public bool canMove;
 }

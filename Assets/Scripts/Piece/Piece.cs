@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Piece : MonoBehaviour
 {
-    public string id;
+    public int id;
     public int x;
     public int y;
 }
