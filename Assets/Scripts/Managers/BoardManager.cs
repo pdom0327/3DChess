@@ -27,8 +27,10 @@ namespace Managers
         {
             _board ??= GameObject.FindGameObjectWithTag(nameof(Board)).GetComponent<Board>();
 
+            //StartCoroutine(Network.Instance.GetRoomSet());
             _board.CreateGrid();
             PieceManager.Instance.SettingPiece();
+            //StartCoroutine(Network.Instance.GetData());
         }
     }
 }
