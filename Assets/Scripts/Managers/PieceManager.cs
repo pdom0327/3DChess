@@ -57,12 +57,6 @@ namespace Managers
             }
             
         }
-
-        private void CheckID()
-        {
-            
-        }
+        
     }
-    
-    
 }
