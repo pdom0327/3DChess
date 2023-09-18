@@ -1,8 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.PackageManager;
+using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -11,15 +10,37 @@ public class InitRequest : MonoBehaviour
     private string _url;
 
     private string _roomSet;
+
+    private static InitRequest _instance;
     
-    public void InitRoom()
+    [Serializable]
+    public class PieceList
     {
-        StartCoroutine(nameof(GetRoomSet));
+        public List<Piece.Piece> pieces;
+    }
+    
+    public static InitRequest Instance
+    {
+        get
+        {
+            if (_instance is null)
+            {
+                _instance = (InitRequest)FindObjectOfType(typeof(InitRequest));
+            }
+            return _instance;
+        }
+    }
+    
+    public IEnumerator InitRoom()
+    {
+        yield return StartCoroutine(nameof(GetRoomSet));
     }
     
     private void Start()
     {
         _url = $"https://heneinbackapi.shop/game/";
+        
+        DontDestroyOnLoad(this); 
     }
     
     private IEnumerator GetRoomSet()
@@ -57,6 +78,14 @@ public class InitRequest : MonoBehaviour
                 Debug.Log("Success to get Data!");
                 
                 Debug.Log(www.downloadHandler.text);
+
+                List<Piece.Piece> pieces = JsonConvert.DeserializeObject<List<Piece.Piece>>(www.downloadHandler.text);
+                
+                foreach (var piece in pieces)
+                {
+                    Debug.Log($"ID: {piece.id}, X: {piece.x}, Y: {piece.y}, HasMoved: {piece.hasMoved}");
+                }
+                
                 // 정보 처리
             }
             else { Debug.Log($"Error! : {www.error}"); }

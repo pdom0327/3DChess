@@ -9,15 +9,16 @@ namespace Managers
         
         void Start()
         {
-        
+            Init();
         }
         
         static void Init()
         {
             if (s_instance == null)
             {
-                GameObject go = GameObject.Find("@GameManager") ;
-                if (!go)
+                GameObject go = null;
+                
+                if (GameObject.Find("@GameManager") || GameObject.Find("GameManager"))
                 {
                     go = new GameObject { name = "@GameManager" };
                     go.AddComponent<GameManager>();

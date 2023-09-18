@@ -1,10 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
-public class Piece : MonoBehaviour
+namespace Piece
 {
-    public int id;
-    public int x;
-    public int y;
+    [Serializable]
+    public class Piece 
+    {
+        public int id;
+        public int x;
+        public int y;
+        public bool hasMoved;
+    }
 }
