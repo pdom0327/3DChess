@@ -1,11 +1,15 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace Managers
 {
     public class UIManager : MonoBehaviour
     {
+        public LoadingUI loadingUI;
+
         private static UIManager _instance;
 
         public static UIManager Instance
@@ -21,16 +25,23 @@ namespace Managers
             }
         }
 
+        void Start()
+        {
+        }
+        
+        #region ClickEvent
         public void ClickEnterGame()
         {
-            StartCoroutine(nameof(InitProgress));
-        } 
-        
-        public IEnumerator InitProgress()
-        {
-            yield return InitRequest.Instance.InitRoom();
-
             SceneManager.LoadScene("GameScene");
         }
+        #endregion
+
+        #region Loading
+        public void Fade(bool isFadeIn)
+        {
+            StartCoroutine(loadingUI.StartFade(isFadeIn));
+        }
+        #endregion
+
     }
 }

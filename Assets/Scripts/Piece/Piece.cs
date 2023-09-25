@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Piece
 {
     [Serializable]
-    public class Piece 
+    public class Piece : MonoBehaviour
     {
         public int id;
         public int x;
