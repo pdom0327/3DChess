@@ -26,9 +26,7 @@ namespace Managers
         void Start()
         {
             _board ??= GameObject.FindGameObjectWithTag(nameof(Board)).GetComponent<Board>();
-            
             _board.CreateGrid();
-            PieceManager.Instance.SettingPiece();
         }
     }
 }

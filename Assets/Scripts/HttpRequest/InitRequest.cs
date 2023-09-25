@@ -73,11 +73,11 @@ public class InitRequest : MonoBehaviour
                 Debug.Log("Success to get Data!");
 
                 List<Piece.Piece> pieces = JsonConvert.DeserializeObject<List<Piece.Piece>>(www.downloadHandler.text);
-                
-                // 정보 처리
-                
+
                 foreach (var piece in pieces)
                 {
+                    PieceManager.Instance.InitPieceById(piece.id, piece.x, piece.y);
+                    
                     Debug.Log($"ID: {piece.id}, X: {piece.x}, Y: {piece.y}, HasMoved: {piece.hasMoved}");
                 }
                 

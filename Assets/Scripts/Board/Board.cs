@@ -1,3 +1,4 @@
+using Managers;
 using UnityEngine;
 
 public class Board : MonoBehaviour
@@ -9,7 +10,6 @@ public class Board : MonoBehaviour
     void Start()
     {
         _cellSize = 1.5f;
-
         _borderLength = 5.25f;
     }
 
@@ -31,6 +31,6 @@ public class Board : MonoBehaviour
         GameObject cell = Instantiate(boardCell, position, Quaternion.Euler(transform.eulerAngles), transform);
         cell.GetComponent<BoardCell>().cellPosition = new Vector2(x, y);
 
-        Managers.BoardManager.Instance.boardCells.Add(cell.GetComponent<BoardCell>());
+        BoardManager.Instance.boardCells.Add(cell.GetComponent<BoardCell>());
     }
 }
