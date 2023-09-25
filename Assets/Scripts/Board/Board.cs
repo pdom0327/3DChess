@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using Managers;
 using UnityEngine;
 
 public class Board : MonoBehaviour
@@ -11,7 +10,6 @@ public class Board : MonoBehaviour
     void Start()
     {
         _cellSize = 1.5f;
-
         _borderLength = 5.25f;
     }
 
@@ -31,8 +29,7 @@ public class Board : MonoBehaviour
     private void CreateCell(Vector3 position, int x, int y)
     {
         GameObject cell = Instantiate(boardCell, position, Quaternion.Euler(transform.eulerAngles), transform);
-        cell.GetComponent<BoardCell>().x = x;
-        cell.GetComponent<BoardCell>().y = y;
+        cell.GetComponent<BoardCell>().cellPosition = new Vector2(x, y);
 
         BoardManager.Instance.boardCells.Add(cell.GetComponent<BoardCell>());
     }
