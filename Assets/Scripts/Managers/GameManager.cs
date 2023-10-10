@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 namespace Managers
 {
@@ -27,6 +28,11 @@ namespace Managers
                 DontDestroyOnLoad(go);
                 s_instance = go.GetComponent<GameManager>();
             }
+        }
+
+        private void Update()
+        {
+            
         }
     }
 }

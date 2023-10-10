@@ -1,10 +1,7 @@
-using System;
 using System.Collections;
-using Unity.VisualScripting;
-using UnityEditor.UI;
+using HttpRequest;
 using UnityEngine;
-using UnityEngine.UIElements;
-using Random = UnityEngine.Random;
+
 
 public class CameraController : MonoBehaviour
 {
@@ -27,8 +24,15 @@ public class CameraController : MonoBehaviour
 
     public float moveDuration = 3.0f;
     public float rotationDuration = 3.0f;
+
+    private string _playerColor;
     
+    private Vector3 _basePos;
+    private Vector3 _endPosLeft;
+    private Vector3 _endPosRight;
+
     private bool _isTouring;
+    
     private bool _isHorizontal;
     private bool _isVertical;
 
@@ -42,19 +46,37 @@ public class CameraController : MonoBehaviour
     private float _mouseX;
     private float _mouseY;
 
-    private void CamMove()
+    private static CameraController _instance;
+
+    public static CameraController Instance
+    {
+        get
+        {
+            if (_instance is null)
+            {
+                _instance = (CameraController)FindObjectOfType(typeof(CameraController));
+            }
+            return _instance;
+        }
+    }
+    
+    /*private void CamMove()
     {
         if (Input.GetMouseButton(1))
         {
-            _mouseX += Input.GetAxis("Mouse X") * -1;
-            _mouseY += Input.GetAxis("Mouse Y");
-
+            _mouseX += Input.GetAxis("Mouse X");
+            _mouseY += Input.GetAxis("Mouse Y") * -1;
             
-            //centralAxis.position = 
+            float horizontalMovement = Input.GetAxis("Mouse X") * -0.8f;
+            float verticalMovement = Input.GetAxis("Mouse Y") * -0.8f;
+
+            Vector3 newPosition = new Vector3(horizontalMovement, verticalMovement, 0f);
+            centralAxis.position += newPosition;
+            
             centralAxis.rotation =
-                Quaternion.Euler(new Vector3(0, centralAxis.rotation.y + _mouseY, centralAxis.rotation.x + _mouseX) * camSpeed);
+                Quaternion.Euler(new Vector3((centralAxis.rotation.y + _mouseY) * camSpeed, (centralAxis.rotation.x + _mouseX) * camSpeed, 0f));
         }
-    }
+    }*/
 
     void Start()
     {
@@ -78,36 +100,22 @@ public class CameraController : MonoBehaviour
 
         _startPosition =  initPos;
         _startRotation =  Quaternion.Euler(Vector3.zero);
-
-        //StartCoroutine(StartTouring());
     }
 
     private void Update()
     {
-        CamMove();
-        
         if (Input.GetKey(KeyCode.A))
         {
-            if (SetEndPosition(sideViewZMinusPos))
+            if (SetEndPosition(_endPosLeft))
                 return;
 
             MoveLeft();
-
-            /*if (SetEndPosition(sideViewZPlusPos))
-                return;
-            
-            MoveLeft();*/
         } else if (Input.GetKey(KeyCode.D))
         {
-            if (SetEndPosition(sideViewZPlusPos))
+            if (SetEndPosition(_endPosRight))
                 return;
 
             MoveRight();
-            
-            /*if (SetEndPosition(sideViewZMinusPos))
-                return;
-
-            MoveRight();*/
         } else if (Input.GetKey(KeyCode.W))
         {
             if (SetEndPosition(topViewPos))
@@ -116,30 +124,13 @@ public class CameraController : MonoBehaviour
             MoveVertical();
         } else if (Input.GetKey(KeyCode.S))
         {
-            if (SetEndPosition(whiteBaseViewPos))
+            if (SetEndPosition(_basePos))
                 return;
 
             MoveVertical();
-
-            /*if (SetEndPosition(blackBaseViewPos))
-                return;
-            
-            MoveVertical();*/
-            
-            if (transform.position == whiteBaseViewPos)
-                _isVertical = false;
         } else if (Input.GetKeyDown(KeyCode.Space))
         {
-            transform.position = whiteBaseViewPos;
-            transform.rotation = whiteBaseViewRot;
-            _timeCount = 0;
-            
-            _isVertical = false;
-            _isHorizontal = false;
-
-            /*transform.position = blackBaseViewPos;
-            transform.rotation = blackBaseViewRot;
-            _timeCount = 0;*/
+            BasePos();
         }
     }
     private void MoveLeft()
@@ -147,6 +138,39 @@ public class CameraController : MonoBehaviour
         if(_isVertical) return;
         
         _isHorizontal = true;
+
+        ForWhiteLeft();
+        ForBlackLeft();
+    }
+
+    private void MoveRight()
+    {
+        if(_isVertical) return;
+        
+        _isHorizontal = true;
+
+        ForWhiteRight();
+        ForBlackRight();
+    }
+
+    private void MoveVertical()
+    {
+        if(_isHorizontal) return;
+        
+        _isVertical = true;
+
+        ForWhiteVertical();
+        ForBlackVertical();
+        
+        if (Input.GetAxis("Vertical") > 0)
+            _timeCount += Time.deltaTime;
+        else if (Input.GetAxis("Vertical") < 0)
+            _timeCount -= Time.deltaTime;
+    }
+
+    private void ForWhiteLeft()
+    {
+        if(_playerColor == "Black") return;
         
         if (transform.position.z > 0f) {
             transform.position = Vector3.Lerp(whiteBaseViewPos, sideViewZPlusPos, _timeCount);
@@ -159,31 +183,29 @@ public class CameraController : MonoBehaviour
         transform.position = Vector3.Lerp(whiteBaseViewPos, sideViewZMinusPos, _timeCount);
         transform.rotation = Quaternion.Slerp(whiteBaseViewRot, sideViewZMinusRot, _timeCount);
             
-        _timeCount += Time.deltaTime; 
+        _timeCount += Time.deltaTime;
+    }
+    private void ForBlackLeft()
+    {
+        if(_playerColor == "White") return;
         
-        
-        /*if (Input.GetAxis("Horizontal") < 0f) {
-            transform.position = Vector3.Lerp(blackBaseViewPos, sideViewZPlusPos, _timeCount);
-            transform.rotation = Quaternion.Slerp(blackBaseViewRot, sideViewZPlusRot, _timeCount);
-            
-            _timeCount += Time.deltaTime;
-            Debug.Log(Input.GetAxis("Horizontal"));
-        } else if (Input.GetAxis("Horizontal") > 0f) {
+        if (transform.position.z < 0f) {
             transform.position = Vector3.Lerp(blackBaseViewPos, sideViewZMinusPos, _timeCount);
             transform.rotation = Quaternion.Slerp(blackBaseViewRot, sideViewZMinusRot, _timeCount);
             
-            _timeCount -= Time.deltaTime;  
-        } else if (Input.GetAxis("Horizontal") == 0f) {
-            Vector3 movePos = new Vector3(0f, 0f, 0.01f);
-            transform.position += movePos;
-        }*/
-    }
+            _timeCount -= Time.deltaTime;
+            return;
+        }
 
-    private void MoveRight()
+        transform.position = Vector3.Lerp(blackBaseViewPos, sideViewZPlusPos, _timeCount);
+        transform.rotation = Quaternion.Slerp(blackBaseViewRot, sideViewZPlusRot, _timeCount);
+            
+        _timeCount += Time.deltaTime;
+    }
+    
+    private void ForWhiteRight()
     {
-        if(_isVertical) return;
-        
-        _isHorizontal = true;
+        if(_playerColor == "Black") return;
         
         if (transform.position.z < 0f) {
             transform.position = Vector3.Lerp(whiteBaseViewPos, sideViewZMinusPos, _timeCount);
@@ -196,50 +218,66 @@ public class CameraController : MonoBehaviour
         transform.position = Vector3.Lerp(whiteBaseViewPos, sideViewZPlusPos, _timeCount);
         transform.rotation = Quaternion.Slerp(whiteBaseViewRot, sideViewZPlusRot, _timeCount);
             
-        _timeCount += Time.deltaTime;    
+        _timeCount += Time.deltaTime;
+    }
+    private void ForBlackRight()
+    {
+        if(_playerColor == "White") return;
         
-        
-        /*if (Input.GetAxis("Horizontal") > 0f) {
-            transform.position = Vector3.Lerp(blackBaseViewPos, sideViewZMinusPos, _timeCount);
-            transform.rotation = Quaternion.Slerp(blackBaseViewRot, sideViewZMinusRot, _timeCount);
-            
-            _timeCount += Time.deltaTime;
-            Debug.Log(Input.GetAxis("Horizontal"));
-        } else if (Input.GetAxis("Horizontal") < 0f) {
+        if (transform.position.z > 0f) {
             transform.position = Vector3.Lerp(blackBaseViewPos, sideViewZPlusPos, _timeCount);
             transform.rotation = Quaternion.Slerp(blackBaseViewRot, sideViewZPlusRot, _timeCount);
-
+            
             _timeCount -= Time.deltaTime;
-            Debug.Log(Input.GetAxis("Horizontal"));
-        } else if (Input.GetAxis("Horizontal") == 0f) {
-            Vector3 movePos = new Vector3(0f, 0f, -0.01f);
-            transform.position += movePos;
-        }*/
+            return;
+        }
+
+        transform.position = Vector3.Lerp(blackBaseViewPos, sideViewZMinusPos, _timeCount);
+        transform.rotation = Quaternion.Slerp(blackBaseViewRot, sideViewZMinusRot, _timeCount);
+            
+        _timeCount += Time.deltaTime;
     }
 
-    private void MoveVertical()
+    private void ForWhiteVertical()
     {
-        if(_isHorizontal) return;
-        
-        _isVertical = true;
+        if(_playerColor == "Black") return;
         
         transform.position = Vector3.Lerp(whiteBaseViewPos, topViewPos, _timeCount);
         transform.rotation = Quaternion.Slerp(whiteBaseViewRot, whiteTopViewRot, _timeCount);
-
-        if (Input.GetAxis("Vertical") > 0)
-            _timeCount += Time.deltaTime;
-        else if (Input.GetAxis("Vertical") < 0)
-            _timeCount -= Time.deltaTime;
         
-        /*transform.position = Vector3.Lerp(blackBaseViewPos, topViewPos, _timeCount);
+        if (transform.position == whiteBaseViewPos)
+            _isVertical = false;
+    }
+    
+    private void ForBlackVertical()
+    {
+        if(_playerColor == "White") return;
+        
+        transform.position = Vector3.Lerp(blackBaseViewPos, topViewPos, _timeCount);
         transform.rotation = Quaternion.Slerp(blackBaseViewRot, blackTopViewRot, _timeCount);
+        
+        if (transform.position == blackBaseViewPos)
+            _isVertical = false;
+    }
 
-        if (Input.GetAxis("Vertical") > 0)
-            _timeCount += Time.deltaTime;
-        else if (Input.GetAxis("Vertical") < 0)
-            _timeCount -= Time.deltaTime;*/
-    } 
-
+    private void BasePos()
+    {
+        if (_playerColor == "White")
+        {
+            transform.position = whiteBaseViewPos;
+            transform.rotation = whiteBaseViewRot;    
+        }
+        else
+        {
+            transform.position = blackBaseViewPos;
+            transform.rotation = blackBaseViewRot;    
+        }
+        _timeCount = 0;
+        
+        _isVertical = false;
+        _isHorizontal = false;
+    }
+    
     private bool SetEndPosition(Vector3 endPos)
     {
         var endPosition = endPos;
@@ -250,28 +288,32 @@ public class CameraController : MonoBehaviour
         return false;
     }
 
-    private IEnumerator StartTouring()
+    public IEnumerator StartTouring(string getColor)
     {
         _isTouring = true;
+        _playerColor = getColor;
         
-        Vector3 endPosition;
-        Quaternion endRotation;
+        Vector3 cinemaEndPosition = Vector3.zero;
+        Quaternion cinemaEndRotation = default;
         
-        // !request : 진영 위치에 따른 요청을 받은후 적용
-        int a = Random.Range(0, 2);
-        if (a > 0)
+        if (_playerColor == "White")
         {
-            endPosition = blackBaseViewPos;
-            endRotation = blackBaseViewRot;
-            endPosition = whiteBaseViewPos;
-            endRotation = whiteBaseViewRot;
-        }
-        else
+            cinemaEndPosition = whiteBaseViewPos;
+            cinemaEndRotation = whiteBaseViewRot;
+
+            _basePos = whiteBaseViewPos;
+            _endPosLeft = sideViewZMinusPos;
+            _endPosRight = sideViewZPlusPos;
+        } else if (_playerColor == "Black")
         {
-            endPosition = whiteBaseViewPos;
-            endRotation = whiteBaseViewRot;
+            cinemaEndPosition = blackBaseViewPos;
+            cinemaEndRotation = blackBaseViewRot;
+
+            _basePos = blackBaseViewPos;
+            _endPosLeft = sideViewZPlusPos;
+            _endPosRight = sideViewZMinusPos;
         }
-        //
+
         float startTime = Time.time + 1.5f;
         
         while (_isTouring)
@@ -281,8 +323,8 @@ public class CameraController : MonoBehaviour
             float moveFraction = Mathf.Clamp01(touringTimer / moveDuration);
             float rotationFraction = Mathf.Clamp01(touringTimer / rotationDuration);
 
-            transform.position = Vector3.Lerp(_startPosition, endPosition, moveFraction);
-            transform.rotation = Quaternion.Slerp(_startRotation, endRotation, rotationFraction);
+            transform.position = Vector3.Lerp(_startPosition, cinemaEndPosition, moveFraction);
+            transform.rotation = Quaternion.Slerp(_startRotation, cinemaEndRotation, rotationFraction);
 
             if (moveFraction >= 1.0f && rotationFraction >= 1.0f) { _isTouring = false; }
             
