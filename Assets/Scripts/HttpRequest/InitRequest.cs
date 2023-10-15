@@ -1,91 +1,91 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using Managers;
 using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.Networking;
+using RoomSet;
 
-public class InitRequest : MonoBehaviour
+namespace HttpRequest
 {
-    private string _url;
-
-    private string _roomSet;
-
-    private static InitRequest _instance;
-
-    public static InitRequest Instance
+    public class InitRequest : MonoBehaviour
     {
-        get
+        public string color;
+
+        private string _url;
+        
+        private static InitRequest _instance;
+
+        public static InitRequest Instance
         {
-            if (_instance is null)
+            get
             {
-                _instance = (InitRequest)FindObjectOfType(typeof(InitRequest));
-            }
-            return _instance;
-        }
-    }
-
-    private void Start()
-    {
-        _url = $"https://heneinbackapi.shop/game/";
-
-        StartCoroutine(nameof(InitRoom));
-    }
-    
-    public IEnumerator InitRoom()
-    {
-        yield return StartCoroutine(nameof(GetRoomSet));
-    }
-    
-    private IEnumerator GetRoomSet()
-    {
-        using (UnityWebRequest www = UnityWebRequest.Get(_url + "roomset"))
-        {
-            Debug.Log("Start Get connection!");
-            
-            yield return www.SendWebRequest();
-            
-            if (www.result == UnityWebRequest.Result.Success)
-            {
-                Debug.Log("Success to get Data!");
-                
-                _roomSet = www.downloadHandler.text;
-
-                StartCoroutine(nameof(PostInit));
-            }
-            else { Debug.Log($"Error! : {www.error}"); }
-        }
-    }
-
-    private IEnumerator PostInit()
-    {
-        using (UnityWebRequest www = UnityWebRequest.Post(_url + "init", _roomSet))
-        {
-            Debug.Log("Start Post connection!");
-            
-            www.SetRequestHeader("Room", _roomSet);
-            
-            yield return www.SendWebRequest();
-
-            if (www.result == UnityWebRequest.Result.Success)
-            {
-                Debug.Log("Success to get Data!");
-
-                List<Piece.Piece> pieces = JsonConvert.DeserializeObject<List<Piece.Piece>>(www.downloadHandler.text);
-
-                foreach (var piece in pieces)
+                if (_instance is null)
                 {
-                    PieceManager.Instance.InitPieceById(piece.id, piece.x, piece.y);
-                    
-                    Debug.Log($"ID: {piece.id}, X: {piece.x}, Y: {piece.y}, HasMoved: {piece.hasMoved}");
+                    _instance = (InitRequest)FindObjectOfType(typeof(InitRequest));
                 }
-                
-                yield return null;
-                
-                UIManager.Instance.Fade(false);
+                return _instance;
             }
-            else { Debug.Log($"Error! : {www.error}"); }
+        }
+
+        private void Start()
+        {
+            _url = $"https://heneinbackapi.shop/game/";
+        }
+
+        public IEnumerator InitRoom()
+        {
+            yield return StartCoroutine(GetRoomSet());
+        }
+        
+        private IEnumerator GetRoomSet()
+        {
+            using (UnityWebRequest www = UnityWebRequest.Get(_url + "roomset"))
+            {
+                yield return www.SendWebRequest();
+                
+                if (www.result == UnityWebRequest.Result.Success)
+                {
+                    var initRoom = JsonConvert.DeserializeObject<RoomSet.RoomSet>(www.downloadHandler.text); 
+                    
+                    color = initRoom.color;
+                    GameManager.Instance.SetRoomSet(initRoom.roomKey);
+
+                    StartCoroutine(PostInit());
+                }
+                else { Debug.Log($"Error! : {www.error}"); }
+            }
+        }
+
+        private IEnumerator PostInit()
+        {
+            var roomSet = GameManager.Instance.GetRoomSet();
+            
+            using (UnityWebRequest www = UnityWebRequest.Post(_url + "init", roomSet))
+            {
+                www.SetRequestHeader("Room", roomSet);
+                
+                yield return www.SendWebRequest();
+
+                if (www.result == UnityWebRequest.Result.Success)
+                {
+                    PieceManager.Instance.GetJsonPieceList(www.downloadHandler.text);
+                    
+                    yield return null;
+                    
+                    UIManager.Instance.Fade(false);
+                    
+                    StartCoroutine(CameraController.Instance.StartTouring(color));
+
+                    EndInit(true);
+                }
+                else { Debug.Log($"Error! : {www.error}"); }
+            }
+        }
+
+        public bool EndInit(bool init = false)
+        {
+            return init;
         }
     }
 }

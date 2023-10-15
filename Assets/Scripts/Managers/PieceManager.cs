@@ -1,7 +1,15 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
+using UnityEngine;
 
 namespace Managers
 {
+    public class Point : MonoBehaviour
+    {
+        public static int x;
+        public static int y;
+    }
+    
     public class PieceManager : MonoBehaviour
     {
         [Header("검정 피스들")]
@@ -36,8 +44,20 @@ namespace Managers
                 return _instance;
             }
         }
+
+        private List<Piece.Piece> _pieces;
         
-        public void InitPieceById(int id, int x, int y)
+        public void GetJsonPieceList(string jsonText)
+        {
+            _pieces = JsonConvert.DeserializeObject<List<Piece.Piece>>(jsonText);
+            
+            foreach (var piece in _pieces)
+            {
+                InitPieceById(piece.id, piece.x, piece.y);
+            }
+        }
+        
+        private void InitPieceById(int id, int x, int y)
         {
             Vector3 pos;
             GameObject piece ;

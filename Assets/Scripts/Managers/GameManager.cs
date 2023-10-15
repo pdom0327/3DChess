@@ -1,20 +1,30 @@
-﻿using UnityEngine;
+﻿using HttpRequest;
+using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 namespace Managers
 {
     public class GameManager : MonoBehaviour
     {
-        static GameManager s_instance;
-        static GameManager Instance { get { Init(); return s_instance; } }
+        private string _roomSet;
         
+        private static GameManager _instance;
+
+        public static GameManager Instance
+        {
+            get
+            {
+                if (_instance is null)
+                {
+                    _instance = (GameManager)FindObjectOfType(typeof(GameManager));
+                }
+                return _instance;
+            }
+        }
+
         void Start()
         {
-            Init();
-        }
-        
-        static void Init()
-        {
-            if (s_instance == null)
+            if (_instance == null)
             {
                 GameObject go = null;
                 
@@ -25,8 +35,25 @@ namespace Managers
                 }
 
                 DontDestroyOnLoad(go);
-                s_instance = go.GetComponent<GameManager>();
+                _instance = go.GetComponent<GameManager>();
             }
+            
+            StartCoroutine(InitRequest.Instance.InitRoom());
+        }
+
+        public string GetRoomSet()
+        {
+            return _roomSet;
+        }
+        
+        public void SetRoomSet(string roomSet)
+        {
+            _roomSet = roomSet;
+        }
+
+        private void Update()
+        {
+            
         }
     }
 }
