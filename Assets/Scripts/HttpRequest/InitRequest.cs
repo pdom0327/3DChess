@@ -4,17 +4,16 @@ using Managers;
 using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.Networking;
+using RoomSet;
 
 namespace HttpRequest
 {
     public class InitRequest : MonoBehaviour
     {
         public string color;
-        
+
         private string _url;
-
-        private string _roomSet;
-
+        
         private static InitRequest _instance;
 
         public static InitRequest Instance
@@ -32,10 +31,8 @@ namespace HttpRequest
         private void Start()
         {
             _url = $"https://heneinbackapi.shop/game/";
-
-            StartCoroutine(InitRoom());
         }
-        
+
         public IEnumerator InitRoom()
         {
             yield return StartCoroutine(GetRoomSet());
@@ -49,10 +46,10 @@ namespace HttpRequest
                 
                 if (www.result == UnityWebRequest.Result.Success)
                 {
-                    RoomSet.RoomSet initRoom = JsonConvert.DeserializeObject<RoomSet.RoomSet>(www.downloadHandler.text);
+                    var initRoom = JsonConvert.DeserializeObject<RoomSet.RoomSet>(www.downloadHandler.text); 
                     
                     color = initRoom.color;
-                    _roomSet = initRoom.roomKey;
+                    GameManager.Instance.SetRoomSet(initRoom.roomKey);
 
                     StartCoroutine(PostInit());
                 }
@@ -62,34 +59,31 @@ namespace HttpRequest
 
         private IEnumerator PostInit()
         {
-            using (UnityWebRequest www = UnityWebRequest.Post(_url + "init", _roomSet))
+            var roomSet = GameManager.Instance.GetRoomSet();
+            
+            using (UnityWebRequest www = UnityWebRequest.Post(_url + "init", roomSet))
             {
-                www.SetRequestHeader("Room", _roomSet);
+                www.SetRequestHeader("Room", roomSet);
                 
                 yield return www.SendWebRequest();
 
                 if (www.result == UnityWebRequest.Result.Success)
                 {
-                    List<Piece.Piece> pieces = JsonConvert.DeserializeObject<List<Piece.Piece>>(www.downloadHandler.text);
-
-                    foreach (var piece in pieces)
-                    {
-                        PieceManager.Instance.InitPieceById(piece.id, piece.x, piece.y);
-                    }
+                    PieceManager.Instance.GetJsonPieceList(www.downloadHandler.text);
                     
                     yield return null;
                     
                     UIManager.Instance.Fade(false);
+                    
+                    StartCoroutine(CameraController.Instance.StartTouring(color));
+
+                    EndInit(true);
                 }
                 else { Debug.Log($"Error! : {www.error}"); }
             }
-
-            StartCoroutine(CameraController.Instance.StartTouring(color));
-
-            EndInit(true);
         }
 
-        public bool EndInit(bool init)
+        public bool EndInit(bool init = false)
         {
             return init;
         }
