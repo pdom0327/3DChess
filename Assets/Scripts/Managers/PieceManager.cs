@@ -1,13 +1,14 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
+using Pieces;
 using UnityEngine;
 
 namespace Managers
 {
     public class Point : MonoBehaviour
     {
-        public static int x;
-        public static int y;
+        public int x;
+        public int y;
     }
     
     public class PieceManager : MonoBehaviour
@@ -45,11 +46,11 @@ namespace Managers
             }
         }
 
-        private List<Piece.Piece> _pieces;
+        private List<Piece> _pieces;
         
         public void GetJsonPieceList(string jsonText)
         {
-            _pieces = JsonConvert.DeserializeObject<List<Piece.Piece>>(jsonText);
+            _pieces = JsonConvert.DeserializeObject<List<Piece>>(jsonText);
             
             foreach (var piece in _pieces)
             {
@@ -66,12 +67,12 @@ namespace Managers
             if (id <= 16)
             {
                 color = "black";
-                pos = BoardManager.Instance.boardCells[id - 1].transform.position;
+                pos = BoardManager.Instance.board.boardCells[id - 1].transform.position;
             }
             else
             {
                 color = "white";
-                pos = BoardManager.Instance.boardCells[31 + id].transform.position;
+                pos = BoardManager.Instance.board.boardCells[31 + id].transform.position;
             }
             
             switch(id)
@@ -79,52 +80,52 @@ namespace Managers
                // black
                case 1: case 8:
                    piece = Instantiate(blackRook, pos, Quaternion.Euler(transform.eulerAngles), blackPieces);
-                   piece.GetComponent<Piece.Piece>().InitPiece(id, x, y, color);
+                   piece.GetComponent<Piece>().InitPiece(id, x, y, color);
                    break;
                case 2: case 7:
                    piece = Instantiate(blackKnight, pos, Quaternion.Euler(transform.eulerAngles), blackPieces);
-                   piece.GetComponent<Piece.Piece>().InitPiece(id, x, y, color);
+                   piece.GetComponent<Piece>().InitPiece(id, x, y, color);
                    break;
                case 3: case 6:
                    piece = Instantiate(blackBishop, pos, Quaternion.Euler(transform.eulerAngles), blackPieces);
-                   piece.GetComponent<Piece.Piece>().InitPiece(id, x, y, color);
+                   piece.GetComponent<Piece>().InitPiece(id, x, y, color);
                    break;
                case 4:
                    piece = Instantiate(blackQueen, pos, Quaternion.Euler(transform.eulerAngles), blackPieces);
-                   piece.GetComponent<Piece.Piece>().InitPiece(id, x, y, color);
+                   piece.GetComponent<Piece>().InitPiece(id, x, y, color);
                    break;
                case 5:
                    piece = Instantiate(blackKing, pos, Quaternion.Euler(transform.eulerAngles), blackPieces);
-                   piece.GetComponent<Piece.Piece>().InitPiece(id, x, y, color);
+                   piece.GetComponent<Piece>().InitPiece(id, x, y, color);
                    break;
                case 9: case 10: case 11: case 12: case 13: case 14: case 15: case 16:
                    piece = Instantiate(blackPawn, pos, Quaternion.Euler(transform.eulerAngles), blackPieces);
-                   piece.GetComponent<Piece.Piece>().InitPiece(id, x, y, color);
+                   piece.GetComponent<Piece>().InitPiece(id, x, y, color);
                    break;
                // white
                case 25: case 32:
                    piece = Instantiate(whiteRook, pos, Quaternion.Euler(transform.eulerAngles), whitePieces);
-                   piece.GetComponent<Piece.Piece>().InitPiece(id, x, y, color);
+                   piece.GetComponent<Piece>().InitPiece(id, x, y, color);
                    break;
                case 26: case 31:
                    piece = Instantiate(whiteKnight, pos, Quaternion.Euler(transform.eulerAngles), whitePieces);
-                   piece.GetComponent<Piece.Piece>().InitPiece(id, x, y, color);
+                   piece.GetComponent<Piece>().InitPiece(id, x, y, color);
                    break;
                case 27: case 30:
                    piece = Instantiate(whiteBishop, pos, Quaternion.Euler(transform.eulerAngles), whitePieces);
-                   piece.GetComponent<Piece.Piece>().InitPiece(id, x, y, color);
+                   piece.GetComponent<Piece>().InitPiece(id, x, y, color);
                    break;
                case 28:
                    piece = Instantiate(whiteQueen, pos, Quaternion.Euler(transform.eulerAngles), whitePieces);
-                   piece.GetComponent<Piece.Piece>().InitPiece(id, x, y, color);
+                   piece.GetComponent<Piece>().InitPiece(id, x, y, color);
                    break;
                case 29:
                    piece = Instantiate(whiteKing, pos, Quaternion.Euler(transform.eulerAngles), whitePieces);
-                   piece.GetComponent<Piece.Piece>().InitPiece(id, x, y, color);
+                   piece.GetComponent<Piece>().InitPiece(id, x, y, color);
                    break;
                case 17: case 18: case 19: case 20: case 21: case 22: case 23: case 24:
                    piece = Instantiate(whitePawn, pos, Quaternion.Euler(transform.eulerAngles), whitePieces);
-                   piece.GetComponent<Piece.Piece>().InitPiece(id, x, y, color);
+                   piece.GetComponent<Piece>().InitPiece(id, x, y, color);
                    break;
            }
         }

@@ -1,12 +1,15 @@
-﻿using HttpRequest;
+﻿using DefaultNamespace;
+using HttpRequest;
+using Pieces;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 
 namespace Managers
 {
     public class GameManager : MonoBehaviour
     {
         private string _roomSet;
+
+        private Piece _clickedPiece;
         
         private static GameManager _instance;
 
@@ -24,7 +27,7 @@ namespace Managers
 
         void Start()
         {
-            if (_instance == null)
+            /*if (_instance == null)
             {
                 GameObject go = null;
                 
@@ -36,7 +39,7 @@ namespace Managers
 
                 DontDestroyOnLoad(go);
                 _instance = go.GetComponent<GameManager>();
-            }
+            }*/
             
             StartCoroutine(InitRequest.Instance.InitRoom());
         }
@@ -53,7 +56,8 @@ namespace Managers
 
         private void Update()
         {
-            
+            if (!Input.GetMouseButtonDown(0)) return ;
+            ClickEvent.Instance.ClickPiece();
         }
     }
 }

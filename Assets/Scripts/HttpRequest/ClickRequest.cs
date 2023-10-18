@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using Managers;
-using UnityEditorInternal;
+using Newtonsoft.Json;
+using Pieces;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -10,52 +11,47 @@ namespace HttpRequest
     public class ClickRequest : MonoBehaviour
     {
         private string _url;
-        
-        private Camera _camera;
 
-        private Piece.Piece _clickedPiece;
+        private Piece _clickedPiece;
+
+        private static ClickRequest _instance;
+
+        public static ClickRequest Instance
+        {
+            get
+            {
+                if (_instance is null)
+                {
+                    _instance = (ClickRequest)FindObjectOfType(typeof(ClickRequest));
+                }
+                return _instance;
+            }
+        }
         
         void Start()
         {
             _url = $"https://heneinbackapi.shop/game/piece/valid-list";
+        }
+        
+        // ReSharper disable Unity.PerformanceAnalysis
+        public IEnumerator GetPoint(int clickedPieceId)
+        {
+            using UnityWebRequest www = UnityWebRequest.Get($"{_url}/{clickedPieceId}");
             
-            _camera = Camera.main;
-        }
-    
-        void Update()
-        {
-            Vector3 mousePosition = Input.mousePosition;
-            mousePosition.z = 20f;
-
-            Ray ray = _camera.ScreenPointToRay(mousePosition);
-            RaycastHit hit;
-
-            if (Input.GetMouseButtonDown(0))
-            {
-                if (Physics.Raycast(ray, out hit))
-                {
-                    _clickedPiece = hit.collider.GetComponent<Piece.Piece>();
-                    StartCoroutine(GetPoint());
-                }
-            }
-        }
-
-        private IEnumerator GetPoint()
-        {
-            using(UnityWebRequest www = UnityWebRequest.Get($"{_url}/{_clickedPiece.id}"))
-            {
-                www.SetRequestHeader("Room", GameManager.Instance.GetRoomSet());
+            www.SetRequestHeader("Room", GameManager.Instance.GetRoomSet());
                 
-                yield return www.SendWebRequest();
+            yield return www.SendWebRequest();
 
-                if (www.result == UnityWebRequest.Result.Success)
-                {
-                    Debug.Log(www.downloadHandler.text);
-                }
-                else
-                {
-                    Debug.Log($"Error! : {www.error}");
-                }
+            if (www.result == UnityWebRequest.Result.Success)
+            {
+                Debug.Log(www.downloadHandler.text);
+                var points = JsonConvert.DeserializeObject<List<Point>>(www.downloadHandler.text);
+
+                BoardManager.Instance.ActiveCell(points);
+            }
+            else
+            {
+                Debug.Log($"Error! : {www.error}");
             }
         }
     }    

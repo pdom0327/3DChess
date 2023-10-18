@@ -1,29 +1,45 @@
-﻿using UnityEngine;
+﻿using HttpRequest;
+using Pieces;
+using UnityEngine;
 
 namespace DefaultNamespace
 {
     public class ClickEvent : MonoBehaviour
     {
+        private Camera _camera;
 
-        private void Start()
-        {
-            
-        }
+        [SerializeField] private LayerMask pieceMask;
+        
+        private static ClickEvent _instance;
 
-        private void Update()
+        public static ClickEvent Instance
         {
-            if (Input.GetMouseButtonDown(0))
+            get
             {
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                RaycastHit hit;
-                if (Physics.Raycast(ray, out hit))
-                {
-                    GameObject clickedObject = hit.collider.gameObject;
-                    Debug.Log("Clicked on object: " + clickedObject.name);
-                    // Perform any additional actions with the clicked object here
-                }
+                if (_instance is null) {
+                    _instance = (ClickEvent)FindObjectOfType(typeof(ClickEvent));
+                }   
+                return _instance;
             }
         }
         
+        private void Start()
+        {
+            _camera = Camera.main;
+        }
+
+        public void ClickPiece()
+        {
+            Vector3 mousePosition = Input.mousePosition;
+            mousePosition.z = 20f;
+            
+            Ray ray = _camera.ScreenPointToRay(mousePosition);
+
+            if (Physics.Raycast(ray, out var hit, mousePosition.z,pieceMask))
+            {
+                var pieceId = hit.collider.GetComponent<Piece>().GetPieceId();
+                StartCoroutine(ClickRequest.Instance.GetPoint(pieceId));
+            }
+        }
     }
 }

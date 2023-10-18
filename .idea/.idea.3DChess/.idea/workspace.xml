@@ -5,60 +5,42 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3a16e4fa-f44f-42ef-b4d1-88d948fd37ab" name="변경" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Boards/BoardCell.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Boards/Point.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Boards/Point.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.3DChess/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.3DChess/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Arts/ChessAsset/LowPolyChessPack.blend" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Arts/ChessAsset/LowPolyChessPack.blend.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Arts/ChessAsset/Models/Black Bishop.dae" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Arts/ChessAsset/Models/Black Bishop.dae.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Arts/ChessAsset/Models/Black King.dae" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Arts/ChessAsset/Models/Black King.dae.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Arts/ChessAsset/Models/Black Knight.dae" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Arts/ChessAsset/Models/Black Knight.dae.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Arts/ChessAsset/Models/Black Pawn.dae" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Arts/ChessAsset/Models/Black Pawn.dae.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Arts/ChessAsset/Models/Black Queen.dae" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Arts/ChessAsset/Models/Black Queen.dae.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Arts/ChessAsset/Models/Black Rook.dae" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Arts/ChessAsset/Models/Black Rook.dae.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Arts/ChessAsset/Models/White Bishop.dae" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Arts/ChessAsset/Models/White Bishop.dae.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Arts/ChessAsset/Models/White King.dae" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Arts/ChessAsset/Models/White King.dae.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Arts/ChessAsset/Models/White Knight.dae" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Arts/ChessAsset/Models/White Knight.dae.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Arts/ChessAsset/Models/White Pawn.dae" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Arts/ChessAsset/Models/White Pawn.dae.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Arts/ChessAsset/Models/White Queen.dae" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Arts/ChessAsset/Models/White Queen.dae.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Arts/ChessAsset/Models/White Rook.dae" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Arts/ChessAsset/Models/White Rook.dae.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Arts/ChessAsset/Textures/Black_texture.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Arts/ChessAsset/Textures/Black_texture.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Arts/ChessAsset/Textures/Border_texture.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Arts/ChessAsset/Textures/Border_texture.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Arts/ChessAsset/Textures/DarkPlate_texture.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Arts/ChessAsset/Textures/DarkPlate_texture.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Arts/ChessAsset/Textures/LightPlate_texture.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Arts/ChessAsset/Textures/LightPlate_texture.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Arts/ChessAsset/Textures/White_texture.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Arts/ChessAsset/Textures/White_texture.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Arts/Material/BlackPiece.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Arts/Material/BlackPiece.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Arts/Material/Black.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Arts/Material/Black.mat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Arts/Material/Border.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Arts/Material/Border.mat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Arts/Material/DarkPlate.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Arts/Material/DarkPlate.mat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Arts/Material/LightPlate.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Arts/Material/LightPlate.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Arts/Material/New Material.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Arts/Material/New Material.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Arts/Material/WhitePiece.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Arts/Material/WhitePiece.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Arts/Material/White.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Arts/Material/White.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Black Pawn.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Black Pawn.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Board/BoardCell.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Board/BoardCell.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Board/BoardCell.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Board/BoardCell.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/ProBuilder/5.0.7/Universal Render Pipeline Support/Material/ProBuilder Default URP.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/ProBuilder/5.0.7/Universal Render Pipeline Support/Material/ProBuilder Default URP.mat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Board.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Boards.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Board/Board.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Boards/Board.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Board/Board.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Boards/Board.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Board/BoardCell.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Board/BoardCell.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Boards/BoardCell.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ClickEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ClickEvent.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/HttpRequest/ClickRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/HttpRequest/ClickRequest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/HttpRequest/InitRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/HttpRequest/InitRequest.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/BoardManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/BoardManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/GameManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/PieceManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/PieceManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/RoomSet/RoomSet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/RoomSet/RoomSet.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Piece.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pieces.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Piece/Piece.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pieces/Piece.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Piece/Piece.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pieces/Piece.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ShaderGraph/OutlineMaterial.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ShaderGraph/OutlineMaterial.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ShaderGraph/OutlineShaderGraph.shadergraph" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ShaderGraph/OutlineShaderGraph.shadergraph" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/InputManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/InputManager.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/URPProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/URPProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -173,6 +155,10 @@
       <workItem from="1697270794993" duration="13441000" />
       <workItem from="1697355418733" duration="4034000" />
       <workItem from="1697376534335" duration="3240000" />
+      <workItem from="1697431316600" duration="6033000" />
+      <workItem from="1697460214515" duration="5668000" />
+      <workItem from="1697537528051" duration="8967000" />
+      <workItem from="1697547856861" duration="4348000" />
     </task>
     <servers />
   </component>
