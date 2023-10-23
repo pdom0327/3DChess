@@ -1,7 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
+using Boards;
 using Managers;
-using UnityEditorInternal;
+using Newtonsoft.Json;
+using Pieces;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -10,52 +14,79 @@ namespace HttpRequest
     public class ClickRequest : MonoBehaviour
     {
         private string _url;
-        
-        private Camera _camera;
 
-        private Piece.Piece _clickedPiece;
+        private static ClickRequest _instance;
+
+        public static ClickRequest Instance
+        {
+            get
+            {
+                if (_instance is null)
+                {
+                    _instance = (ClickRequest)FindObjectOfType(typeof(ClickRequest));
+                }
+                return _instance;
+            }
+        }
         
         void Start()
         {
-            _url = $"https://heneinbackapi.shop/game/piece/valid-list";
-            
-            _camera = Camera.main;
+            _url = $"https://heneinbackapi.shop/game/piece";
         }
-    
-        void Update()
+        
+        public IEnumerator GetPoint(int clickedPieceId)
         {
-            Vector3 mousePosition = Input.mousePosition;
-            mousePosition.z = 20f;
+            using UnityWebRequest www = UnityWebRequest.Get($"{_url}/valid-list/{clickedPieceId}");
+            
+            www.SetRequestHeader("Room", GameManager.Instance.GetRoomSet());
+                
+            yield return www.SendWebRequest();
 
-            Ray ray = _camera.ScreenPointToRay(mousePosition);
-            RaycastHit hit;
-
-            if (Input.GetMouseButtonDown(0))
+            if (www.result == UnityWebRequest.Result.Success)
             {
-                if (Physics.Raycast(ray, out hit))
-                {
-                    _clickedPiece = hit.collider.GetComponent<Piece.Piece>();
-                    StartCoroutine(GetPoint());
-                }
+                var points = JsonConvert.DeserializeObject<List<Point>>(www.downloadHandler.text);
+                
+                if (points != null)
+                    BoardManager.Instance.ActiveCell(points);
+            }
+            else
+            {
+                print($"Error! : {www.error}");
             }
         }
-
-        private IEnumerator GetPoint()
+        // https://forum.unity.com/threads/unity-2021-unitywebrequest-native-collection-memory-leak.1175612/
+        public IEnumerator PostMovePiece(Collider col)
         {
-            using(UnityWebRequest www = UnityWebRequest.Get($"{_url}/{_clickedPiece.id}"))
+            var cell = col.GetComponent<BoardCell>();
+            
+            string jsonData = JsonConvert.SerializeObject(new
             {
-                www.SetRequestHeader("Room", GameManager.Instance.GetRoomSet());
-                
-                yield return www.SendWebRequest();
+                hasMoved = true,
+                GameManager.Instance.clickedPiece.pieceData.id,
+                cell.cellPosition.x,
+                cell.cellPosition.y
+            });
 
-                if (www.result == UnityWebRequest.Result.Success)
-                {
-                    Debug.Log(www.downloadHandler.text);
-                }
-                else
-                {
-                    Debug.Log($"Error! : {www.error}");
-                }
+            using UnityWebRequest www = UnityWebRequest.Post($"{_url}/move",  string.Empty);
+            byte[] jsonDataBytes = new UTF8Encoding().GetBytes(jsonData);
+
+            www.uploadHandler = new UploadHandlerRaw(jsonDataBytes);
+            www.downloadHandler = new DownloadHandlerBuffer();
+            
+            www.SetRequestHeader("Content-Type", "application/json");
+            www.SetRequestHeader("Room", GameManager.Instance.GetRoomSet());
+            
+            yield return www.SendWebRequest();
+            
+            if (www.result == UnityWebRequest.Result.Success)
+            {
+                PieceManager.Instance.MovePiece(col);
+                
+                BoardManager.Instance.ClearCell();
+            }
+            else
+            {
+                print($"Error! : {www.error}");
             }
         }
     }    
