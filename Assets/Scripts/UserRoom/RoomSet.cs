@@ -2,10 +2,10 @@
 using Newtonsoft.Json;
 using UnityEngine;
 
-namespace RoomSet
+namespace UserRoom
 {
     [Serializable]
-    public class RoomSet : MonoBehaviour
+    public class RoomSet
     {
         public string color;
         public string roomKey;

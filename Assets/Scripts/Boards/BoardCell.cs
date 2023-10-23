@@ -7,11 +7,9 @@ namespace Boards
     public class BoardCell : MonoBehaviour
     {
         public GameObject piece;
-        public Vector2 cellPosition;
+        public Vector2Int cellPosition;
         [Space]
         public bool canMove;
-        
-        
     }    
 }
 

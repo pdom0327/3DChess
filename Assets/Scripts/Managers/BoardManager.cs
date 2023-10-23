@@ -12,7 +12,7 @@ namespace Managers
 
         private Board _board;
 
-        private List<GameObject> _activatedCells;
+        public List<GameObject> activatedCells;
 
         private static BoardManager _instance = null;
 
@@ -46,7 +46,7 @@ namespace Managers
                 {
                     Vector3 cellPosition = new Vector3(x * cellSize - borderLength, 0.1f, z * cellSize - borderLength) ;
                 
-                    CreateCell(cellPosition, x, z);
+                    CreateCell(cellPosition, z, x);
                 }
             }
         }
@@ -54,29 +54,48 @@ namespace Managers
         private void CreateCell(Vector3 position, int x, int y)
         {
             GameObject cell = Instantiate(boardCell, position, Quaternion.Euler(transform.eulerAngles), board.transform);
-            cell.GetComponent<BoardCell>().cellPosition = new Vector2(x, y);
+
+            cell.GetComponent<BoardCell>().cellPosition = new Vector2Int(x, y);
             cell.SetActive(false);
             
-            board.boardCells.Add(cell);
+            board.boardCells.Add(cell.GetComponent<BoardCell>());
         }
 
         public void ActiveCell(List<Point> points)
         {
             foreach (var point in points)
             {
-                var a = 1;
                 var cell = board.GetCell(point.x, point.y);
+                
+                if (!cell) return ;
 
-                if (cell == null) return ;
+                if (cell.piece)
+                {
+                    cell.transform.localScale = new Vector3(cell.transform.localScale.x, 1f, cell.transform.localScale.z);
+                    cell.transform.position = new Vector3(cell.transform.position.x, 1f, cell.transform.position.z);    
+                }
+                else
+                {
+                    cell.transform.localScale = new Vector3(cell.transform.localScale.x, 0.05f, cell.transform.localScale.z);
+                    cell.transform.position = new Vector3(cell.transform.position.x, 0.1f, cell.transform.position.z);       
+                }
 
-                cell.SetActive(true);
-                _activatedCells.Add(cell);
+                cell.canMove = true;
+                cell.gameObject.SetActive(true);
+                
+                activatedCells.Add(cell.gameObject);
             }
+        }
 
-            foreach (var a in _activatedCells)
+        public void ClearCell()
+        {
+            foreach (var cell in activatedCells)
             {
-                Debug.Log(a);
+                cell.GetComponent<BoardCell>().canMove = false;
+                cell.SetActive(false);
             }
+            
+            activatedCells.Clear();
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using DefaultNamespace;
+﻿using System.Collections.Generic;
+using Boards;
+using DefaultNamespace;
 using HttpRequest;
 using Pieces;
 using UnityEngine;
@@ -7,10 +9,14 @@ namespace Managers
 {
     public class GameManager : MonoBehaviour
     {
+        public Piece clickedPiece;
+        
         private string _roomSet;
 
-        private Piece _clickedPiece;
+        private string _color;
         
+        private bool _turn;
+
         private static GameManager _instance;
 
         public static GameManager Instance
@@ -53,10 +59,21 @@ namespace Managers
         {
             _roomSet = roomSet;
         }
+        
+        public string GetColor()
+        {
+            return _color;
+        }
+        
+        public void SetColor(string color)
+        {
+            _color = color;
+        }
 
         private void Update()
         {
             if (!Input.GetMouseButtonDown(0)) return ;
+            ClickEvent.Instance.ClickCell();
             ClickEvent.Instance.ClickPiece();
         }
     }

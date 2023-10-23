@@ -1,5 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
+using Boards;
 using Managers;
 using Newtonsoft.Json;
 using Pieces;
@@ -11,8 +14,6 @@ namespace HttpRequest
     public class ClickRequest : MonoBehaviour
     {
         private string _url;
-
-        private Piece _clickedPiece;
 
         private static ClickRequest _instance;
 
@@ -30,13 +31,12 @@ namespace HttpRequest
         
         void Start()
         {
-            _url = $"https://heneinbackapi.shop/game/piece/valid-list";
+            _url = $"https://heneinbackapi.shop/game/piece";
         }
         
-        // ReSharper disable Unity.PerformanceAnalysis
         public IEnumerator GetPoint(int clickedPieceId)
         {
-            using UnityWebRequest www = UnityWebRequest.Get($"{_url}/{clickedPieceId}");
+            using UnityWebRequest www = UnityWebRequest.Get($"{_url}/valid-list/{clickedPieceId}");
             
             www.SetRequestHeader("Room", GameManager.Instance.GetRoomSet());
                 
@@ -44,14 +44,49 @@ namespace HttpRequest
 
             if (www.result == UnityWebRequest.Result.Success)
             {
-                Debug.Log(www.downloadHandler.text);
                 var points = JsonConvert.DeserializeObject<List<Point>>(www.downloadHandler.text);
-
-                BoardManager.Instance.ActiveCell(points);
+                
+                if (points != null)
+                    BoardManager.Instance.ActiveCell(points);
             }
             else
             {
-                Debug.Log($"Error! : {www.error}");
+                print($"Error! : {www.error}");
+            }
+        }
+        // https://forum.unity.com/threads/unity-2021-unitywebrequest-native-collection-memory-leak.1175612/
+        public IEnumerator PostMovePiece(Collider col)
+        {
+            var cell = col.GetComponent<BoardCell>();
+            
+            string jsonData = JsonConvert.SerializeObject(new
+            {
+                hasMoved = true,
+                GameManager.Instance.clickedPiece.pieceData.id,
+                cell.cellPosition.x,
+                cell.cellPosition.y
+            });
+
+            using UnityWebRequest www = UnityWebRequest.Post($"{_url}/move",  string.Empty);
+            byte[] jsonDataBytes = new UTF8Encoding().GetBytes(jsonData);
+
+            www.uploadHandler = new UploadHandlerRaw(jsonDataBytes);
+            www.downloadHandler = new DownloadHandlerBuffer();
+            
+            www.SetRequestHeader("Content-Type", "application/json");
+            www.SetRequestHeader("Room", GameManager.Instance.GetRoomSet());
+            
+            yield return www.SendWebRequest();
+            
+            if (www.result == UnityWebRequest.Result.Success)
+            {
+                PieceManager.Instance.MovePiece(col);
+                
+                BoardManager.Instance.ClearCell();
+            }
+            else
+            {
+                print($"Error! : {www.error}");
             }
         }
     }    

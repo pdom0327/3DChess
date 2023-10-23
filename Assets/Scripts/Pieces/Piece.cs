@@ -1,5 +1,4 @@
 using System;
-using UnityEditor;
 using UnityEngine;
 
 namespace Pieces
@@ -7,36 +6,35 @@ namespace Pieces
     [Serializable]
     public class Piece : MonoBehaviour
     {
-        public int id;
-        public int x;
-        public int y;
-        public bool hasMoved;
+        private PieceData PieceData { set => pieceData = value; }
+        public PieceData pieceData;
+
         public string pieceColor;
 
         private bool _isClick;
-        private Material _material;
+        private MeshRenderer _renderer;
+        private Material _outlineMaterial;
+        private Material _defaultMaterial;
 
-        void Start()
+        private void Start()
         {
-            _material = GetComponent<Material>();
+            _renderer = GetComponent<MeshRenderer>();
+            _outlineMaterial = _renderer.sharedMaterials[1];
+            _defaultMaterial = _renderer.sharedMaterials[0];
+            HighlightOff();
         }
-        
-        public void InitPiece(int _id, int _x, int _y, string color)
+
+        public void InitPiece(int initId, int initX, int initY, string color)
         {
-            id = _id;
-            x = _x;
-            y = _y;
+            pieceData.id = initId;
+            pieceData.x = initX;
+            pieceData.y = initY;
             pieceColor = color;
         }
 
-        public int GetPieceId()
-        {
-            return id;
-        }
-        
         public Vector2 GetPiecePosition()
         {
-            return new Vector2(x, y);
+            return new Vector2(pieceData.x, pieceData.y);
         }
 
         public bool CheckIsClick(bool isClicked)
@@ -57,14 +55,16 @@ namespace Pieces
 
         private void HighlightOff()
         {
-            var property = "_Alpha";
-            _material.SetFloat(property, 0);
+            Material[] mats = _renderer.sharedMaterials;
+            mats[1] = _defaultMaterial;
+            _renderer.sharedMaterials = mats;
         }
         
         private void HighlightOn()
         {
-            var property = "_Alpha";
-            _material.SetFloat(property, 0.5f);
+            Material[] mats = _renderer.sharedMaterials;
+            mats[1] = _outlineMaterial;
+            _renderer.sharedMaterials = mats;
         }
     }
 }

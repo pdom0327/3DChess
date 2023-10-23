@@ -1,17 +1,14 @@
 using System.Collections;
-using System.Collections.Generic;
 using Managers;
 using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.Networking;
-using RoomSet;
+using UserRoom;
 
 namespace HttpRequest
 {
     public class InitRequest : MonoBehaviour
     {
-        public string color;
-
         private string _url;
         
         private static InitRequest _instance;
@@ -40,47 +37,44 @@ namespace HttpRequest
         
         private IEnumerator GetRoomSet()
         {
-            using (UnityWebRequest www = UnityWebRequest.Get(_url + "roomset"))
-            {
-                yield return www.SendWebRequest();
+            using UnityWebRequest www = UnityWebRequest.Get(_url + "roomset");
+            yield return www.SendWebRequest();
                 
-                if (www.result == UnityWebRequest.Result.Success)
-                {
-                    var initRoom = JsonConvert.DeserializeObject<RoomSet.RoomSet>(www.downloadHandler.text); 
+            if (www.result == UnityWebRequest.Result.Success)
+            {
+                var initRoom = JsonConvert.DeserializeObject<RoomSet>(www.downloadHandler.text); 
                     
-                    color = initRoom.color;
-                    GameManager.Instance.SetRoomSet(initRoom.roomKey);
+                GameManager.Instance.SetColor(initRoom.color);
+                GameManager.Instance.SetRoomSet(initRoom.roomKey);
 
-                    StartCoroutine(PostInit());
-                }
-                else { Debug.Log($"Error! : {www.error}"); }
+                StartCoroutine(PostInit());
             }
+            else { print($"Error! : {www.error}"); }
         }
-
+        
         private IEnumerator PostInit()
         {
             var roomSet = GameManager.Instance.GetRoomSet();
+
+            using UnityWebRequest www = UnityWebRequest.Post(_url + "init", roomSet);
             
-            using (UnityWebRequest www = UnityWebRequest.Post(_url + "init", roomSet))
-            {
-                www.SetRequestHeader("Room", roomSet);
+            www.SetRequestHeader("Room", roomSet);
                 
-                yield return www.SendWebRequest();
+            yield return www.SendWebRequest();
 
-                if (www.result == UnityWebRequest.Result.Success)
-                {
-                    PieceManager.Instance.GetJsonPieceList(www.downloadHandler.text);
+            if (www.result == UnityWebRequest.Result.Success)
+            {
+                PieceManager.Instance.GetJsonPieceList(www.downloadHandler.text);
                     
-                    yield return null;
+                yield return null;
                     
-                    UIManager.Instance.Fade(false);
+                UIManager.Instance.Fade(false);
                     
-                    StartCoroutine(CameraController.Instance.StartTouring(color));
+                StartCoroutine(CameraController.Instance.StartTouring(GameManager.Instance.GetColor()));
 
-                    EndInit(true);
-                }
-                else { Debug.Log($"Error! : {www.error}"); }
+                EndInit(true);
             }
+            else { print($"Error! : {www.error}"); }
         }
 
         public bool EndInit(bool init = false)

@@ -5,42 +5,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3a16e4fa-f44f-42ef-b4d1-88d948fd37ab" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Boards/BoardCell.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Boards/Point.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Boards/Point.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Pieces/PieceData.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Pieces/PieceData.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.3DChess/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.3DChess/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Arts/Material/Black.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Arts/Material/Black.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Arts/Material/Border.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Arts/Material/Border.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Arts/Material/DarkPlate.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Arts/Material/DarkPlate.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Arts/Material/LightPlate.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Arts/Material/LightPlate.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Arts/Material/White.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Arts/Material/White.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Black Pawn.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Black Pawn.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Arts/Material.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Arts/Material/Black.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Arts/Material/Black.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Arts/Material/Border.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Arts/Material/Border.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Arts/Material/DarkPlate.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Arts/Material/DarkPlate.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Arts/Material/LightPlate.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Arts/Material/LightPlate.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Arts/Material/White.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Arts/Material/White.mat.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Board/BoardCell.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Board/BoardCell.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Board/BoardCell.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Board/BoardCell.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/ProBuilder/5.0.7/Universal Render Pipeline Support/Material/ProBuilder Default URP.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/ProBuilder/5.0.7/Universal Render Pipeline Support/Material/ProBuilder Default URP.mat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Board.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Boards.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Board/Board.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Boards/Board.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Board/Board.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Boards/Board.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Board/BoardCell.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Board/BoardCell.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Boards/BoardCell.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Boards/Board.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Boards/Board.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Boards/BoardCell.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Boards/BoardCell.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ClickEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ClickEvent.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/HttpRequest/ClickRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/HttpRequest/ClickRequest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/HttpRequest/InitRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/HttpRequest/InitRequest.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/BoardManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/BoardManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/GameManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/PieceManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/PieceManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Piece.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pieces.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Piece/Piece.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pieces/Piece.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Piece/Piece.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pieces/Piece.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Pieces/Piece.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pieces/Piece.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/RoomSet.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UserRoom.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/RoomSet/RoomSet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UserRoom/RoomSet.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/RoomSet/RoomSet.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UserRoom/RoomSet.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/ShaderGraph/OutlineMaterial.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ShaderGraph/OutlineMaterial.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ShaderGraph/OutlineShaderGraph.shadergraph" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ShaderGraph/OutlineShaderGraph.shadergraph" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ShaderGraph/OutlineShaderGraph.shadergraph.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ShaderGraph/OutlineShaderGraph.shadergraph.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/URPProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/URPProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,9 +43,14 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/24d45e813e524a99bfb7a145158a7980157a00/16/b74a687b/Object.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/24d45e813e524a99bfb7a145158a7980157a00/7c/08c488b0/GameObject.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/24d45e813e524a99bfb7a145158a7980157a00/af/b2fe61be/Vector3.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/24d45e813e524a99bfb7a145158a7980157a00/c8/4dd35284/Debug.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/24d45e813e524a99bfb7a145158a7980157a00/d0/299fbb2b/Component.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/4a/a1607c99/List`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/941a8c6d33294d1bbcde07f67192e8abbe00/a6/3226dfa9/UnityWebRequest.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.burst@1.7.3/Editor/BurstAotCompiler.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@12.1.7/Runtime/Data/UniversalRenderPipelineAsset.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventSystem.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/InputModules/BaseInput.cs" root0="SKIP_HIGHLIGHTING" />
@@ -90,6 +90,14 @@
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2021.3.9f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath C:\Users\a9018\Desktop\3DChess -testResults Logs/results.xml -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Users\a9018\Desktop\3DChess" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
+    <configuration name="독립실행형 플레이어" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/../새 폴더 (2)\3DChess.exe" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\a9018\Desktop\새 폴더 (2)" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <method v="2" />
@@ -159,6 +167,14 @@
       <workItem from="1697460214515" duration="5668000" />
       <workItem from="1697537528051" duration="8967000" />
       <workItem from="1697547856861" duration="4348000" />
+      <workItem from="1697613626192" duration="18806000" />
+      <workItem from="1697707780007" duration="10769000" />
+      <workItem from="1697791691183" duration="18089000" />
+      <workItem from="1697872559488" duration="16570000" />
+      <workItem from="1697898319606" duration="399000" />
+      <workItem from="1697976882290" duration="8483000" />
+      <workItem from="1698033717555" duration="1000" />
+      <workItem from="1698033846265" duration="859000" />
     </task>
     <servers />
   </component>
@@ -167,6 +183,17 @@
   </component>
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="Both" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
