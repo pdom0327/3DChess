@@ -1,5 +1,11 @@
-public class LoginRequestDto
+using System;
+
+namespace _3dChess.Schemas
 {
-    public string email;
-    public string password;
+    [Serializable]
+    public class LoginRequestDto
+    {
+        public string email;
+        public string password;
+    }
 }

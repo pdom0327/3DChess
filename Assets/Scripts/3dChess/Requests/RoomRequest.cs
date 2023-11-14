@@ -13,17 +13,16 @@ public class RoomRequest : MonoBehaviour
         set => _url = value;
     }
 
-
     void Start()
     {
-        URL = "https://3dchess.shop";
+        URL = "https://3dchess.shop/auth";
 
-        StartCoroutine("Test");
+        StartCoroutine(Test());
     }
 
     private IEnumerator Test()
     {
-        using UnityWebRequest request = UnityWebRequest.Get($"{URL}/auth/header/test");
+        using UnityWebRequest request = UnityWebRequest.Get($"{URL}/header/test");
         
         request.SetRequestHeader("Authorization", "Anything To String");
         
