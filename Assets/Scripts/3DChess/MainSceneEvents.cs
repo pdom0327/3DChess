@@ -1,5 +1,6 @@
 using _3dChess;
 using _3dChess.Requests;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MainSceneEvents : MonoBehaviour
@@ -8,10 +9,12 @@ public class MainSceneEvents : MonoBehaviour
     public SignUpEvent signUpEvents;
 
     public SignUpRequest sign;
-
+    public LoginRequest login;
+    
     public void RequestLogin()
     {
-        
+        var userData = logInEvents.InstanceLoginData();
+        StartCoroutine(login.LoginReq(userData));
     }
     
     public void RequestSignUp()

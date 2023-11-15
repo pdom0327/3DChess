@@ -5,17 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3a16e4fa-f44f-42ef-b4d1-88d948fd37ab" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/3dChess/LoginEvent.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/3dChess/LoginEvent.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/3dChess/Requests/SignUpRequest.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/3dChess/Requests/SignUpRequest.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/3dChess/SignUpEvent.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/3dChess/SignUpEvent.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.3DChess/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.3DChess/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/3dChess/Requests/RoomRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/3dChess/Requests/RoomRequest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/3dChess/Schemas/LoginRequestDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/3dChess/Schemas/LoginRequestDto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/3dChess/Schemas/SignUpRequestDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/3dChess/Schemas/SignUpRequestDto.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/3DChess/MainSceneEvents.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/3DChess/MainSceneEvents.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/3DChess/Requests/LoginRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/3DChess/Requests/LoginRequest.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -162,6 +155,7 @@
       <workItem from="1699941274072" duration="3463000" />
       <workItem from="1699954772498" duration="11301000" />
       <workItem from="1699966597334" duration="270000" />
+      <workItem from="1700032108898" duration="655000" />
     </task>
     <servers />
   </component>

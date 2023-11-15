@@ -39,7 +39,7 @@ namespace _3dChess.Requests
             
             if (request.result == UnityWebRequest.Result.Success)
             {
-                print($"Error! : {request.downloadHandler.text}");
+                print($"Success! : {request.downloadHandler.text}");
             }
             else
             {
