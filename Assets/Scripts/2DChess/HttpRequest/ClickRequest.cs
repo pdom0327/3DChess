@@ -4,8 +4,6 @@ using System.Collections.Generic;
 using System.Text;
 using Boards;
 using Managers;
-using Newtonsoft.Json;
-using Pieces;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -13,7 +11,7 @@ namespace HttpRequest
 {
     public class ClickRequest : MonoBehaviour
     {
-        private string _url;
+        private Uri _url;
 
         private static ClickRequest _instance;
 
@@ -31,7 +29,7 @@ namespace HttpRequest
         
         void Start()
         {
-            _url = $"https://heneinbackapi.shop/game/piece";
+            _url = new Uri($"https://heneinbackapi.shop/game/piece");
         }
         
         public IEnumerator GetPoint(int clickedPieceId)
@@ -44,7 +42,7 @@ namespace HttpRequest
 
             if (www.result == UnityWebRequest.Result.Success)
             {
-                var points = JsonConvert.DeserializeObject<List<Point>>(www.downloadHandler.text);
+                var points = JsonUtility.FromJson<List<Point>>(www.downloadHandler.text);
                 
                 if (points != null)
                     BoardManager.Instance.ActiveCell(points);
@@ -59,7 +57,7 @@ namespace HttpRequest
         {
             var cell = col.GetComponent<BoardCell>();
             
-            string jsonData = JsonConvert.SerializeObject(new
+            string jsonData = JsonUtility.ToJson(new
             {
                 hasMoved = true,
                 GameManager.Instance.clickedPiece.pieceData.id,
@@ -67,7 +65,8 @@ namespace HttpRequest
                 cell.cellPosition.y
             });
 
-            using UnityWebRequest www = UnityWebRequest.Post($"{_url}/move",  string.Empty);
+            using UnityWebRequest www = UnityWebRequest.PostWwwForm($"{_url}/move",  string.Empty);
+            
             byte[] jsonDataBytes = new UTF8Encoding().GetBytes(jsonData);
 
             www.uploadHandler = new UploadHandlerRaw(jsonDataBytes);

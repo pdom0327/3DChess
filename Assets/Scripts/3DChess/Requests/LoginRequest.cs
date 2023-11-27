@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using _3dChess.Schemas;
-using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -23,7 +22,7 @@ public class LoginRequest : MonoBehaviour
 
     public IEnumerator LoginReq(LoginRequestDto loginData)
     {
-        var jsonData = JsonConvert.SerializeObject(loginData);
+        var jsonData = JsonUtility.ToJson(loginData);
         
         using UnityWebRequest request = UnityWebRequest.Get($"{URL}/login");
 

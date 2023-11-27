@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Boards;
-using Newtonsoft.Json;
 using Pieces;
 using UnityEngine;
 
@@ -53,7 +52,7 @@ namespace Managers
         
         public void GetJsonPieceList(string jsonText)
         {
-            var pieces = JsonConvert.DeserializeObject<List<PieceData>>(jsonText);
+            var pieces = JsonUtility.FromJson<List<PieceData>>(jsonText);
             
             foreach (var piece in pieces)
             {
