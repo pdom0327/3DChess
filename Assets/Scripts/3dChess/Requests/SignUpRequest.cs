@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Text;
 using _3dChess.Schemas;
-using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -9,6 +8,8 @@ namespace _3dChess.Requests
 {
     public class SignUpRequest : MonoBehaviour
     {
+        public UnityWebRequest.Result signUpResult; 
+        
         private string _url;
 
         public string URL
@@ -24,9 +25,9 @@ namespace _3dChess.Requests
         
         public IEnumerator SignUpReq(SignUpRequestDto signUpData)
         {
-            var jsonData = JsonConvert.SerializeObject(signUpData);
+            var jsonData = JsonUtility.ToJson(signUpData);
             
-            using UnityWebRequest request = UnityWebRequest.Post($"{URL}/sign-up", string.Empty);
+            using UnityWebRequest request = UnityWebRequest.PostWwwForm($"{URL}/sign-up", string.Empty);
 
             byte[] jsonDataBytes = new UTF8Encoding().GetBytes(jsonData);
 
@@ -37,9 +38,11 @@ namespace _3dChess.Requests
             
             yield return request.SendWebRequest();
             
+            signUpResult = request.result;
+            
             if (request.result == UnityWebRequest.Result.Success)
             {
-                print($"Error! : {request.downloadHandler.text}");
+                print($"Success! : {request.downloadHandler.text}");
             }
             else
             {
