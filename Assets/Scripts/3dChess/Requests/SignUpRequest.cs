@@ -8,6 +8,8 @@ namespace _3dChess.Requests
 {
     public class SignUpRequest : MonoBehaviour
     {
+        public UnityWebRequest.Result signUpResult; 
+        
         private string _url;
 
         public string URL
@@ -35,6 +37,8 @@ namespace _3dChess.Requests
             request.SetRequestHeader("Content-Type", "application/json");
             
             yield return request.SendWebRequest();
+            
+            signUpResult = request.result;
             
             if (request.result == UnityWebRequest.Result.Success)
             {

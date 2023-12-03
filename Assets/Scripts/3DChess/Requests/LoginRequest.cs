@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using System.Text;
 using _3dChess.Schemas;
 using UnityEngine;
@@ -7,6 +6,8 @@ using UnityEngine.Networking;
 
 public class LoginRequest : MonoBehaviour
 {
+    public UnityWebRequest.Result loginResult; 
+    
     private string _url;
 
     public string URL
@@ -34,6 +35,8 @@ public class LoginRequest : MonoBehaviour
         request.SetRequestHeader("Content-Type", "application/json");
 
         yield return request.SendWebRequest();
+        
+        loginResult = request.result;
         
         if (request.result == UnityWebRequest.Result.Success)
         {

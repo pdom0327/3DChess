@@ -3,17 +3,16 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace _3dChess
+namespace _3DChess.MainMenuEvents
 {
-    public class SignUpEvent : MonoBehaviour
+    public class LoginEvent : MonoBehaviour
     {
-        public Button goToLoginBtn;
-        public Button reqSignUpBtn;
-        
-        public TMP_InputField userName;
+        public Button goToSignUpBtn;
+        public Button reqLoginBtn;
+
         public TMP_InputField email;
         public TMP_InputField password;
-
+        
         public void ActivePanel()
         {
             gameObject.SetActive(true);
@@ -24,13 +23,12 @@ namespace _3dChess
             gameObject.SetActive(false);
         }
 
-        public SignUpRequestDto InstanceUserData()
+        public LoginRequestDto InstanceLoginData()
         {
-            SignUpRequestDto myData = new SignUpRequestDto
+            LoginRequestDto myData = new LoginRequestDto()
             {
-                userName = userName.text,
-                password = password.text,
-                email = email.text
+                email = email.text,
+                password = password.text
             };
             return myData;
         }

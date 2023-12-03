@@ -1,6 +1,5 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 using WebSocketSharp;
 
@@ -9,41 +8,42 @@ namespace _3DChess
     public class SocketRequest : MonoBehaviour
     {
         public string url;
+        private WebSocket _wsRequest;
+
+        
+        public WebSocket WsRequest
+        {
+            get => _wsRequest;
+            set => _wsRequest = value;
+        }
 
         void Start()
         {
-            var ws = new WebSocket(url);
-            //ws.SetProxy("http://3dchess.shop/game/start", "", "");
-
-            Debug.Log(ws.Log.Level);
+            WsRequest = new WebSocket(url);
             
-            ws.OnOpen += (sender, e) => ws.Send ("Hi, there!");
+            WsRequest.OnOpen += (sender, e) => WsRequest.Send ("Hi, there!");
 
-            ws.OnMessage += (sender, e) => {
+            WsRequest.OnMessage += (sender, e) => {
                 var body = !e.IsPing ? e.Data : "A ping was received.";
                 Debug.Log("[WebSocket Message] " + body);
             };
 
-            ws.OnError += (sender, e) => {
+            WsRequest.OnError += (sender, e) => {
                 Debug.LogError("[WebSocket Error] " + e.Message);
             };
 
-            ws.OnClose += (sender, e) => {
+            WsRequest.OnClose += (sender, e) => {
                 Debug.Log("[WebSocket Close (" + e.Code + ")] " + e.Reason);
-                Debug.Log(e.Reason + "?");
             };
             
-            ws.OnError += (sender, e) => {
+            WsRequest.OnError += (sender, e) => {
                 Debug.LogError("[WebSocket Error] " + e.Message);
                 if (e.Exception != null) {
                     Debug.LogError("Exception: " + e.Exception.ToString());
                 }
             };
             
-            ws.Connect ();
-            
-            Debug.Log("=============");
-            Debug.Log(ws.Log.Level);
+            WsRequest.Connect();
         }
     }
 }
