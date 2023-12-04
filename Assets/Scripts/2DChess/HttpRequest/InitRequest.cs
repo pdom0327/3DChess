@@ -1,6 +1,5 @@
 using System.Collections;
 using Managers;
-using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.Networking;
 using UserRoom;
@@ -42,7 +41,7 @@ namespace HttpRequest
                 
             if (www.result == UnityWebRequest.Result.Success)
             {
-                var initRoom = JsonConvert.DeserializeObject<RoomSet>(www.downloadHandler.text); 
+                var initRoom = JsonUtility.FromJson<RoomSet>(www.downloadHandler.text); 
                     
                 GameManager.Instance.SetColor(initRoom.color);
                 GameManager.Instance.SetRoomSet(initRoom.roomKey);
@@ -56,7 +55,7 @@ namespace HttpRequest
         {
             var roomSet = GameManager.Instance.GetRoomSet();
 
-            using UnityWebRequest www = UnityWebRequest.Post(_url + "init", roomSet);
+            using UnityWebRequest www = UnityWebRequest.PostWwwForm(_url + "init", roomSet);
             
             www.SetRequestHeader("Room", roomSet);
                 
