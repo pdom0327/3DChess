@@ -47,9 +47,9 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _CellAlpha: 0.6
+    - _CellAlpha: 0.8
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - _CellColor: {r: 0.25943398, g: 1, b: 0.42143932, a: 0}
+    - _CellColor: {r: 0.4855453, g: 1, b: 0.4009434, a: 0}
   m_BuildTextureStacks: []
