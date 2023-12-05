@@ -1,6 +1,6 @@
-using System;
-using JetBrains.Annotations;
+using UnityEditor.ShaderGraph.Serialization;
 using UnityEngine;
+using UnityEngine.Networking;
 using WebSocketSharp;
 
 namespace _3DChess
@@ -21,15 +21,12 @@ namespace _3DChess
         {
             WsRequest = new WebSocket(url);
             
-            WsRequest.OnOpen += (sender, e) => WsRequest.Send ("Hi, there!");
+            WsRequest.OnOpen += (sender, e) => { };
 
             WsRequest.OnMessage += (sender, e) => {
                 var body = !e.IsPing ? e.Data : "A ping was received.";
-                Debug.Log("[WebSocket Message] " + body);
-            };
-
-            WsRequest.OnError += (sender, e) => {
-                Debug.LogError("[WebSocket Error] " + e.Message);
+                Debug.Log("[WebSocket Message] " + e.Data);
+                Debug.Log("[WebSocket Byte] " + e.RawData);
             };
 
             WsRequest.OnClose += (sender, e) => {
