@@ -8,12 +8,10 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.3DChess/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.3DChess/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/3DChessGameScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/3DChessGameScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/3DChess/BoardScrips/Board3D.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/3DChess/BoardScrips/Board3D.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/3DChess/BoardScrips/BoardCell3D.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/3DChess/BoardScrips/BoardCell3D.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/3DChess/GetInitList.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/3DChess/GetAction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/3DChess/GetInitList.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/3DChess/GetAction.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/3DChess/LocationInit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/3DChess/LocationInit.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/3DChess/SocketRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/3DChess/SocketRequest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/URPProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/URPProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,9 +28,13 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/38d3cef14c5a4fc9a92de0991034bc1a3d200/a2/0e998d38/WebSocket.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/4a/a1607c99/List`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/941a8c6d33294d1bbcde07f67192e8abbe00/a6/3226dfa9/UnityWebRequest.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/3DChess/BoardManager3D.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/3DChess/BoardScrips/Board3D.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/3DChess/GetInitList.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/3DChess/GetAction.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/3DChess/InitData.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/3DChess/Piece3D.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/3DChess/PieceData3D.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/3DChess/PieceManager3D.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/3DChess/SocketRequest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.github-glitchenzo.nugetforunity@441f6df275/Editor/NugetPackageInstaller.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@14.0.8/Editor/AssetPostProcessors/MaterialPostprocessor.cs" root0="SKIP_HIGHLIGHTING" />
@@ -179,6 +181,9 @@
       <workItem from="1701517747245" duration="501000" />
       <workItem from="1701682880516" duration="14464000" />
       <workItem from="1701768685456" duration="13444000" />
+      <workItem from="1701852534475" duration="13876000" />
+      <workItem from="1701884363705" duration="1041000" />
+      <workItem from="1701929281827" duration="300000" />
     </task>
     <servers />
   </component>

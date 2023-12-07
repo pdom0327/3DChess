@@ -26,7 +26,22 @@ namespace _3DChess
             WsRequest.OnMessage += (sender, e) => {
                 var body = !e.IsPing ? e.Data : "A ping was received.";
                 Debug.Log("[WebSocket Message] " + e.Data);
-                Debug.Log("[WebSocket Byte] " + e.RawData);
+
+
+                if (!e.Data.Contains("action")) return;
+                
+                if (e.Data.Contains(Action.COLOR.ToString()))
+                {
+                    var newInit = JsonUtility.FromJson<GetActionColor>(e.Data);
+                    
+                    PieceManager3D.Instance.color = newInit.color;
+                }
+                else if (e.Data.Contains(Action.INIT.ToString()))
+                {
+                    var newInit = JsonUtility.FromJson<GetActionInit>(e.Data);
+                    
+                    PieceManager3D.Instance.InitPiece(newInit.locationList);
+                }
             };
 
             WsRequest.OnClose += (sender, e) => {
@@ -42,5 +57,6 @@ namespace _3DChess
             
             WsRequest.Connect();
         }
+       
     }
 }

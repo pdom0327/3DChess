@@ -1,5 +1,8 @@
+using System;
+
 namespace _3DChess
 {
+    [Serializable]
     public enum PieceType
     {
         Pawn,
@@ -9,6 +12,7 @@ namespace _3DChess
         Queen,
         King,
     }
+    [Serializable]
     public enum Level
     {
         QL1 = 0,
@@ -29,6 +33,7 @@ namespace _3DChess
         KL5,
         KL6,
     }
+    [Serializable]
     public enum File
     {
         Z = 0,
@@ -38,6 +43,7 @@ namespace _3DChess
         D,
         E,
     }
+    [Serializable]
     public enum Rank
     {
         Zero = 0,

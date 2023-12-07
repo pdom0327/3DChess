@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace _3DChess.BoardScrips
@@ -11,6 +12,8 @@ namespace _3DChess.BoardScrips
 
         [SerializeField] private Transform queenLayers;
         [SerializeField] private Transform kingLayers;
+
+        public List<BoardCell3D> boardCellList = new List<BoardCell3D>();
         
         public GameObject BoardCell
         {
@@ -26,12 +29,6 @@ namespace _3DChess.BoardScrips
         private int _mainInitCount;
         private int _attackInitCount;
         private Level _level;
-
-        void Start()
-        {
-            MainBoardInit();
-            AttackBoardInit();
-        }
 
         public void MainBoardInit()
         {
@@ -115,6 +112,8 @@ namespace _3DChess.BoardScrips
            cellProperty.File = Enum.Parse<File>(Enum.GetName(typeof(File), _countFile));
            cellProperty.Rank = Enum.Parse<Rank>(Enum.GetName(typeof(Rank), _countRank));
            cellProperty.Level = _level;
+           
+           boardCellList.Add(cell.GetComponent<BoardCell3D>());
         }
 
         private void MainBoardFileCounter()
