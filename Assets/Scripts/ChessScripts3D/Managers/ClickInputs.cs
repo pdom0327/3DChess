@@ -4,8 +4,6 @@ using ChessScripts3D.PieceScripts;
 using ChessScripts3D.Socket;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using WebSocketSharp;
-using Action = ChessScripts3D.Socket.Action;
 
 namespace ChessScripts3D.Managers
 {
@@ -28,7 +26,10 @@ namespace ChessScripts3D.Managers
                 Vector3 mousePos = Mouse.current.position.ReadValue();
                 mousePos.z = 100f;
 
-                Ray ray = Camera.main.ScreenPointToRay(mousePos);
+                var cam = Camera.main;
+                if (!cam) return;
+                
+                Ray ray = cam.ScreenPointToRay(mousePos);
                 RaycastHit hit;
 
                 if (!_clickedPiece && !_clickedCell)
@@ -56,7 +57,6 @@ namespace ChessScripts3D.Managers
             
             var data = new PieceMove()
             {
-                action = Action.Temp.ToString(),
                 pieceType = piece.PieceType.ToString(),
             
                 currentRank = piece.Rank.ToString(),

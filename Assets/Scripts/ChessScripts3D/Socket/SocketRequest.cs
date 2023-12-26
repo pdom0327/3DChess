@@ -6,18 +6,13 @@ namespace ChessScripts3D.Socket
 {
     public class SocketRequest : SingleTon<SocketRequest>
     {
-        // todo 지워
-        public Canvas canvas;
-        
         public string url;
         private PieceManager3D _pieceManager;
-        private DeleteMe _deleteMe;
         public WebSocket WsRequest { get; private set; }
 
         private void Awake()
         {
             _pieceManager = PieceManager3D.Instance;
-            _deleteMe = FindObjectOfType<DeleteMe>();
             
             WsRequest = new WebSocket(url);
             
@@ -31,10 +26,6 @@ namespace ChessScripts3D.Socket
             
             WsRequest.OnClose += (sender, e) => {
                 Debug.Log("[WebSocket Close (" + e.Code + ")] " + e.Reason);
-                if (_deleteMe != null)
-                {
-                    _deleteMe.a = true;
-                }
             };
             
             WsRequest.OnError += (sender, e) => {
@@ -69,13 +60,6 @@ namespace ChessScripts3D.Socket
         private void Ws_InGame_OnMessage(object sender, MessageEventArgs e)
         {
             if (!e.Data.Contains("action")) return;
-            
-            if (e.Data.Contains(Action.Temp.ToString()))
-            {
-                var data = JsonUtility.FromJson<PieceMove>(e.Data);
-                
-                _pieceManager.SetPieceMove(data);
-            }
         }
     }
 }

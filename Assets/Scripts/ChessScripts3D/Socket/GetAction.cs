@@ -8,7 +8,6 @@ namespace ChessScripts3D.Socket
     {
         INIT,
         COLOR,
-        Temp,
     }
 
     [Serializable]
