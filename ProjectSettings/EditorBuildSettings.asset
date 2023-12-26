@@ -14,4 +14,5 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/3DChessGameScene.unity
     guid: 358130b81c9eda9408156a75b3034172
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: 0f3a025a19ac0ba4db13f643753fd0e9, type: 2}
