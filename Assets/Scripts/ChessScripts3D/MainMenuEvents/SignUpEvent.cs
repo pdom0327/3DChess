@@ -1,4 +1,5 @@
-﻿using _3dChess.Schemas;
+﻿using System;
+using _3dChess.Schemas;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,6 +14,11 @@ namespace ChessScripts3D.MainMenuEvents
         public TMP_InputField userName;
         public TMP_InputField email;
         public TMP_InputField password;
+
+        private void Awake()
+        {
+            gameObject.SetActive(false);
+        }
 
         public void ActivePanel()
         {

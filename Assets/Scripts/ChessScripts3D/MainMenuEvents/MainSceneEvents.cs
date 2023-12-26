@@ -1,5 +1,5 @@
 using System.Collections;
-using _3dChess.Requests;
+using ChessScripts3D.Requests;
 using ChessScripts3D.Socket;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -12,10 +12,9 @@ namespace ChessScripts3D.MainMenuEvents
         public SignUpEvent signUpEvents;
         public GameMenuEvent gameMenuEvents;
         public HeaderEvent headerEvents; 
-
+        
         public SignUpRequest sign;
         public LoginRequest login;
-        public SocketRequest socket;
 
         public void Login()
         {
@@ -81,7 +80,8 @@ namespace ChessScripts3D.MainMenuEvents
 
         public void GoToGameMenu()
         {
-            logInEvents.DeActivePanel();    
+            logInEvents.DeActivePanel();
+            signUpEvents.DeActivePanel();
             gameMenuEvents.ActivePanel();
         }
 
@@ -92,8 +92,6 @@ namespace ChessScripts3D.MainMenuEvents
 
         public void Exit()
         {
-            socket.WsRequest.Close();
-        
             headerEvents.ExitGame();
         }
     }

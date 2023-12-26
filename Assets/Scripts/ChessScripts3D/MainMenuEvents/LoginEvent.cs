@@ -9,9 +9,14 @@ namespace ChessScripts3D.MainMenuEvents
     {
         public Button goToSignUpBtn;
         public Button reqLoginBtn;
-
+                    
         public TMP_InputField email;
         public TMP_InputField password;
+        
+        private void Awake()
+        {
+            gameObject.SetActive(true);
+        }
         
         public void ActivePanel()
         {

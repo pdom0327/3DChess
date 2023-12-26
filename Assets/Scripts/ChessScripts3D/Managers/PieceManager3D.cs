@@ -9,8 +9,6 @@ namespace ChessScripts3D.Managers
 {
     public class PieceManager3D : SingleTon<PieceManager3D>
     {
-        public string color;
-
         [Header("검정 피스")][Space]
         public GameObject blackPawn;
         public GameObject blackBishop;
@@ -26,15 +24,17 @@ namespace ChessScripts3D.Managers
         public GameObject whiteKing;
         public GameObject whiteRook;
 
-        private bool IsInit;
-        private List<InitData> initData;
         private Action _action;
         
-        void Start()
-        {
-        
-        }
-        
+        public string color;
+        public List<Piece3D> pieceList;
+
+        private bool IsInit;
+        private List<InitData> initData;
+
+        private bool IsMove;
+        private PieceMove _moveData;
+
         void Update()
         {
             if (IsInit && _action == Action.INIT)
@@ -42,11 +42,16 @@ namespace ChessScripts3D.Managers
                 IsInit = false;
                 InitPiece(initData);
             }
+
+            if (IsMove && _action == Action.Temp)
+            {
+                IsMove = false;
+                MovePiece(_moveData);
+            }
         }
 
         public void SetColor(GetActionColor data)
         {
-            // todo GameManager쪽으로 빠져야 할거 같음
             _action = data.action;
             color = data.color;
         }
@@ -57,8 +62,19 @@ namespace ChessScripts3D.Managers
             initData = data.locationList;
         }
         
+        public void SetPieceMove(PieceMove data)
+        {
+            // todo 변경할것
+            _action = Enum.Parse<Action>(data.action);
+            IsMove = true;
+            _moveData = data;
+        }
+        
         private void InitPiece(List<InitData> initList)
         {
+            if (color == "Black") ClickInputs.Instance.pieceMask = LayerMask.GetMask("BlackPiece");
+            if (color == "White") ClickInputs.Instance.pieceMask = LayerMask.GetMask("WhitePiece");
+
             foreach (var data in initList)
             {
                 Piece3D piece = null;
@@ -71,7 +87,6 @@ namespace ChessScripts3D.Managers
                 {
                     piece = checkWhitePieceType(Enum.Parse<PieceType>(data.pieceType));
                 }
-
 
                 if (piece)
                 {
@@ -90,6 +105,7 @@ namespace ChessScripts3D.Managers
                             piece.transform.position = cell.transform.position;
                         }
                     }
+                    pieceList.Add(piece);
                 }
             }
         }
@@ -155,6 +171,31 @@ namespace ChessScripts3D.Managers
             
             print("피스가 존재하지 않습니다.");
             return null;
+        }
+
+        private void MovePiece(PieceMove data)
+        {
+            foreach (var piece in pieceList)
+            {
+                var pieceData = piece.pieceData3D;
+                if (Enum.Parse<PieceType>(data.pieceType) == pieceData.PieceType 
+                && Enum.Parse<Rank>(data.currentRank) == pieceData.Rank
+                && Enum.Parse<File>(data.currentFile) == pieceData.File
+                && Enum.Parse<Level>(data.currentLevel) == pieceData.Level)
+                {
+                    var cells = BoardManager3D.Instance.board.boardCellList;
+                    foreach (var cell in cells)
+                    {
+                        if (Enum.Parse<Rank>(data.toMoveRank) == cell.Rank
+                        && Enum.Parse<File>(data.toMoveFile) == cell.File
+                        && Enum.Parse<Level>(data.toMoveLevel) == cell.Level)
+                        {
+                            var MovePos = cell.transform.position;
+                            piece.transform.position = MovePos;
+                        }
+                    }
+                }    
+            }
         }
     }
 }

@@ -9,6 +9,11 @@ namespace ChessScripts3D.MainMenuEvents
         public Button gameStartBtn;
         public Button logOutBtn;
     
+        private void Awake()
+        {
+            gameObject.SetActive(false);
+        }
+        
         public void ActivePanel()
         {
             gameObject.SetActive(true);

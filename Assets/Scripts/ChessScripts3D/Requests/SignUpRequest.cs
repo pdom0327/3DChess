@@ -4,7 +4,7 @@ using _3dChess.Schemas;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace _3dChess.Requests
+namespace ChessScripts3D.Requests
 {
     public class SignUpRequest : MonoBehaviour
     {

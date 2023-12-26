@@ -7,18 +7,19 @@ namespace ChessScripts3D.MainMenuEvents
     {
         public Button exitBtn;
 
+        private void Awake()
+        {
+            gameObject.SetActive(true);
+        }
+        
         void Start()
         {
-            gameObject.GetComponent<RectTransform>().SetSiblingIndex(1);
+            gameObject.GetComponent<RectTransform>().SetSiblingIndex(10);
         }
         
         public void ExitGame()
         {
-            #if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-            #else
             Application.Quit();
-            #endif
         }
     }
 }

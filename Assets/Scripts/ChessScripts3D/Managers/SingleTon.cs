@@ -5,7 +5,6 @@ namespace ChessScripts3D.Managers
     public class SingleTon<T> : MonoBehaviour where T : MonoBehaviour
     {
         private static T _instance;
-
         public static T Instance
         {
             get

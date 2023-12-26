@@ -1,3 +1,7 @@
+using System.Collections;
+using ChessScripts3D.InputSystem;
+using ChessScripts3D.Managers;
+using Managers;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -5,78 +9,93 @@ namespace ChessScripts3D
 {
     class CameraMove : MonoBehaviour
     {
-        public InputActions.GameCameraActions actions;
+        private InputFeedback _input; 
     
-        [SerializeField] private float sensitivity = 3.0f;
+        [SerializeField] private float sensitivity = 5.0f;
 
         [SerializeField] private float wheelMax = 100.0f;
         [SerializeField] private float wheelMin = 20.0f;
         [SerializeField] private float wheelSpeed = 4.0f;
 
+        private Camera _camera;
+        private Transform _camTransform;
+        
         private Quaternion _currentRotation;
         private float _mouseX;
         private float _mouseY;
-        private float _xRot;
-        private float _yRot;
 
         private Vector3 _movePos;
-    
-        private float xSpeed;
-        private float ySpeed;
-        private float zSpeed;
-    
+        
         private Vector3 _homePoint;
         private Quaternion _homeRotate;
+
+        private bool initEnd;
     
         void Start()
         {
-            actions = new InputActions().GameCamera;
-    
-            _homePoint = new Vector3(-8, 7, 0);
-            _homeRotate = Quaternion.Euler(65, 90, 0);
+            _camera = GetComponent<Camera>();
+            _camTransform = transform;
+            
+            _input = InputFeedback.Instance;
+
+            SetInitPos();
         }
     
         void Update()
         {
-            /*if (Input.GetKeyDown(KeyCode.Space))
-        {
-            camTransform.position = _homePoint;
-            camTransform.rotation = _homeRotate;
-        }
-
-        if (Input.GetMouseButton(1))
-        {
-            Vector3 rotation = Vector3.zero;
+            SetInitPos();
+            if (_input.goHome)
+            {
+                _camTransform.position = _homePoint;
+                _camTransform.rotation = _homeRotate;
+                _input.goHome = false;
+            }
             
-            _mouseY = Input.GetAxis("Mouse X") * (sensitivity / 2f);
-            _mouseX = Input.GetAxis("Mouse Y") * (sensitivity / 2f);
+                
+            if (_input.isRightButton)
+            {
+                _mouseY = _input.cameraYRotate;
 
-            rotation += new Vector3(
-                camTransform.eulerAngles.x + _mouseX
-                ,camTransform.eulerAngles.y + _mouseY);
+                _currentRotation = _camTransform.rotation;
+                
+                _currentRotation.eulerAngles = new Vector3(
+                    _currentRotation.eulerAngles.x
+                    , _currentRotation.eulerAngles.y + _mouseY / sensitivity
+                    );
+                
+                _camTransform.rotation = _currentRotation;
+            }
 
-            _currentRotation.eulerAngles = rotation;
-            camTransform.rotation = _currentRotation;
-        }*/
+            var inputWheel = _input.cameraZoom;
+            if (inputWheel > 0 && wheelMin < _camera.fieldOfView)
+                _camera.fieldOfView -= wheelSpeed;
+            if (inputWheel < 0 && wheelMax > _camera.fieldOfView)
+                _camera.fieldOfView += wheelSpeed;
 
-            /*var inputWheel = Input.mouseScrollDelta;
-        if (inputWheel.y > 0 && wheelMin < _camera.fieldOfView)
-            _camera.fieldOfView -= wheelSpeed;
-        if (inputWheel.y < 0 && wheelMax > _camera.fieldOfView)
-            _camera.fieldOfView += wheelSpeed;*/
-
-            _movePos = actions.CamMove.ReadValue<Vector3>();
-            
+            _movePos = _input.cameraMovePos;
             transform.position += _movePos * (sensitivity * Time.deltaTime);
+        }
+        
+        private void SetInitPos()
+        {
+            var myColor = PieceManager3D.Instance.color;
+            if (initEnd && myColor is "White" or "Black") return;
+
+            if (myColor == "Black")
+            {
+                _homePoint = new Vector3(8, 17, 0);
+                _homeRotate = Quaternion.Euler(65, 270, 0);
+                initEnd = true;
+            }
+            else if (myColor == "White")
+            {
+                _homePoint = new Vector3(-8, 7, 0);
+                _homeRotate = Quaternion.Euler(65, 90, 0);
+                initEnd = true;
+            } 
             
-        }
-        private void OnEnable()
-        {
-            actions.Enable();
-        }
-        private void OnDisable()
-        {
-            actions.Disable();
+            _camTransform.position = _homePoint;
+            _camTransform.rotation = _homeRotate;
         }
     }
 }
