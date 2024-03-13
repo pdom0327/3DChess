@@ -5,8 +5,8 @@ namespace _3dChess.Schemas
     [Serializable]
     public class SignUpRequestDto
     {
-        public string userName;
-        public string password;
-        public string email;
+        public string userName { get; set; }
+        public string password { get; set; }
+        public string email { get; set; }
     }
 }

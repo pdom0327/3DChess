@@ -1,9 +1,7 @@
-using System.Collections;
 using ChessScripts3D.InputSystem;
 using ChessScripts3D.Managers;
-using Managers;
 using UnityEngine;
-using UnityEngine.InputSystem;
+using WarpSquareEngine;
 
 namespace ChessScripts3D
 {
@@ -39,6 +37,14 @@ namespace ChessScripts3D
             _input = InputFeedback.Instance;
 
             SetInitPos();
+
+            Game testGame = new Game();
+            var temp = testGame.GetPieces();
+
+            foreach (var piece in temp)
+            {
+                Debug.Log(piece.GetPieceType());
+            }
         }
     
         void Update()
