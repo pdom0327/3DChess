@@ -1,4 +1,6 @@
-﻿namespace ChessScripts3D.Managers
+﻿using WarpSquareEngine;
+
+namespace ChessScripts3D.Managers
 {
     public class GameManager : SingleTon<GameManager>
     {
