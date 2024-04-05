@@ -550,7 +550,7 @@ public class MainMenuManager : MonoBehaviour
         
         SetMatchingUI();
         
-        webSocket.StartMatching();
+        webSocket.enabled = true;
         
         _nowMatching = StartCoroutine(MatchingTimer());
         
@@ -561,7 +561,7 @@ public class MainMenuManager : MonoBehaviour
     {
         StopCoroutine(_nowMatching);
         
-        webSocket.StopMatching();
+        webSocket.enabled = false;
         
         SetPlayUI();
     }
@@ -589,11 +589,21 @@ public class MainMenuManager : MonoBehaviour
     {
         float elapsedTime = 0f;
 
-        while (elapsedTime < 40)
+        while (elapsedTime < 300)
         {
             elapsedTime += Time.deltaTime;
-            
-            matchingTimeText.text = $"0:{Mathf.FloorToInt(elapsedTime).ToString()}";
+
+            if (elapsedTime / 60 >= 1)
+            {
+                var minutes = Mathf.FloorToInt(elapsedTime) / 60;
+                var seconds = Mathf.FloorToInt(elapsedTime) % 60;
+                
+                matchingTimeText.text = $"{minutes}:{seconds}";
+            }
+            else
+            {
+                matchingTimeText.text = $"0:{Mathf.FloorToInt(elapsedTime)}";    
+            }
 
             yield return null;
         }

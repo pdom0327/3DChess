@@ -3,6 +3,7 @@ using System.Diagnostics.Tracing;
 using ChessScripts3D.Managers;
 using ChessScripts3D.Socket;
 using ChessScripts3D.Web.HTTPSchemas;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using WebSocketSharp;
@@ -11,29 +12,22 @@ namespace ChessScripts3D.Web
 {
     public class ChessGameWebSocket : SingleTon<ChessGameWebSocket>
     {
-        public bool isMatching;
-        
         public WebSocket socket;
-        
-        void Update()
-        {
-            if ( !isMatching ) return ;
-            
-            var auth = WebRequests.Instance.GetAuthorization();
 
-            socket = new WebSocket(WebAPIData.SocketUrl + $"/game/start?token={auth}");
-            
+        private void Start()
+        {
             socket.OnOpen += (sender, e) => { Debug.Log("hello"); };
 
             socket.OnMessage += (sender, e) =>
             {
+                Debug.Log(e.Data);
                 SetUpAction(e);
             };
             
             socket.OnClose += (sender, e) => {
                 if (e.Code == 1000)
                 {
-                    StopMatching();
+                    socket.Close();
                 }
             };
             
@@ -42,26 +36,24 @@ namespace ChessScripts3D.Web
                     Debug.LogError("Exception: " + e.Exception);
                 }
             };
-                
-            socket.Connect();
-
-            EndMatching();
         }
 
-        public void StartMatching() { isMatching = WebAPIData.matchStart; }
-
-        private void EndMatching() { isMatching = WebAPIData.matchEnd; }
-
-        public void StopMatching()
+        public void OnEnable()
         {
-            EndMatching();
+            var auth = WebRequests.Instance.GetAuthorization();
+
+            socket = new WebSocket(WebAPIData.SocketUrl + $"/game/start?token={auth}");
+
+            socket.Connect();
+        }
+
+        public void OnDisable()
+        {
             socket.Close();
         }
 
         public void SetUpAction(MessageEventArgs e)
         {
-            var gameManager = GameManager.Instance;
-
             if (e.Data.Contains(SocketAction.COLOR.ToString()))
             {
                 var actionObject = JsonUtility.FromJson<GetColorAction>(e.Data);
