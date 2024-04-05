@@ -2,6 +2,7 @@ using ChessScripts3D.InputSystem;
 using ChessScripts3D.Managers;
 using UnityEngine;
 using WarpSquareEngine;
+using Color = WarpSquareEngine.Color;
 
 namespace ChessScripts3D
 {
@@ -84,16 +85,16 @@ namespace ChessScripts3D
         
         private void SetInitPos()
         {
-            var myColor = PieceManager3D.Instance.color;
-            if (initEnd && myColor is "White" or "Black") return;
+            var myColor = GameManager.Instance.myColor;
+            if (initEnd && myColor is Color.White or Color.Black) return;
 
-            if (myColor == "Black")
+            if (myColor == Color.Black)
             {
                 _homePoint = new Vector3(8, 17, 0);
                 _homeRotate = Quaternion.Euler(65, 270, 0);
                 initEnd = true;
             }
-            else if (myColor == "White")
+            else if (myColor == Color.White)
             {
                 _homePoint = new Vector3(-8, 7, 0);
                 _homeRotate = Quaternion.Euler(65, 90, 0);

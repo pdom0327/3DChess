@@ -9,6 +9,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
+using WebSocketSharp;
 using static UnityEngine.Networking.UnityWebRequest;
 
 
@@ -70,6 +71,7 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] GameObject homePanel;
     [SerializeField] GameObject playPanel;
     [SerializeField] GameObject profilePanel;
+    [SerializeField] GameObject matchingPanel;
     [SerializeField] GameObject alertPanel;
     [SerializeField] Image social1Image;
     [SerializeField] Image social2Image;
@@ -108,15 +110,22 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] AudioSource audioSource;
 
     [Header("System")] 
-    [SerializeField] WebRequests webRequest; 
+    [SerializeField] WebRequests webRequest;
+    [SerializeField] ChessGameWebSocket webSocket;
+
+    [Header("matchingTimeText")]
+    [SerializeField] TextMeshProUGUI matchingTimeText;
     
+    [Header("Button Interactable")] 
+    [SerializeField] List<Button> controlButtons = new List<Button>();
+
     [Header("Login")] 
     [SerializeField] TMP_InputField loginEmailInput;
     [SerializeField] TMP_InputField loginPasswordInput;
 
     [Header("SignUp")] 
     [SerializeField] TMP_InputField signUpEmailInput;
-    [SerializeField] TMP_InputField signUpIdInput;
+    [SerializeField] TMP_InputField signUpUserNameInput;
     [SerializeField] TMP_InputField signUpPasswordInput;
     
     [Header("Alert")] 
@@ -125,6 +134,7 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] Button alertQuitButton;
     
     Resolution[] resolutions;
+    private Coroutine _nowMatching;
     #endregion
 
     void Start()
@@ -143,33 +153,38 @@ public class MainMenuManager : MonoBehaviour
         homePanel.SetActive(false);
         playPanel.SetActive(false);
         profilePanel.SetActive(false);
+        matchingPanel.SetActive(false);
     }
 
-    private void SetHomeUI()
+    public void SetHomeUI()
     {
         loginPanel.SetActive(false);
         signUpPanel.SetActive(false);
         homePanel.SetActive(true);
         playPanel.SetActive(false);
         profilePanel.SetActive(false);
+        matchingPanel.SetActive(false);
     }
 
     public void SetPlayUI()
     {
-        loginPanel.SetActive(false);
-        signUpPanel.SetActive(false);
         homePanel.SetActive(false);
         playPanel.SetActive(true);
         profilePanel.SetActive(false);
+        matchingPanel.SetActive(false);
     }
     
     public void SetProfileUI()
     {
-        loginPanel.SetActive(false);
-        signUpPanel.SetActive(false);
         homePanel.SetActive(false);
         playPanel.SetActive(false);
         profilePanel.SetActive(true);
+    }
+
+    public void SetMatchingUI()
+    {
+        playPanel.SetActive(false);
+        matchingPanel.SetActive(true);   
     }
 
     public void UIEditorUpdate()
@@ -421,8 +436,20 @@ public class MainMenuManager : MonoBehaviour
 
     #region WebSystem
 
+    private void DisableButton()
+    {
+        foreach (var button in controlButtons) { button.interactable = false; }
+    }
+
+    private void EnableButton()
+    {
+        foreach (var button in controlButtons) { button.interactable = true; }
+    }
+    
     public void TryLogin()
     {
+        DisableButton();
+        
         var loginData = new LoginRequestDto() { 
             email = loginEmailInput.text, 
             password = loginPasswordInput.text
@@ -448,12 +475,16 @@ public class MainMenuManager : MonoBehaviour
                 alertText.text = errorBox.errorMessage;
             }
         }));
+        
+        EnableButton();
     }
     
     public void TrySignUp()
     {
+        DisableButton();
+        
         var signUpData = new SignUpRequestDto() {
-            userName = signUpIdInput.text, 
+            userName = signUpUserNameInput.text, 
             password = signUpPasswordInput.text,
             email = signUpEmailInput.text
         };
@@ -479,10 +510,14 @@ public class MainMenuManager : MonoBehaviour
                 alertText.text = errorBox.errorMessage;
             }
         }));
+        
+        EnableButton();
     }
     
     public void TryGetUserInfo()
     {
+        DisableButton();
+        
         StartCoroutine(webRequest.userInfo.UserInfoReq(webRequest.GetAuthorization(),req =>
         {
             if (req.result == Result.Success)
@@ -505,6 +540,30 @@ public class MainMenuManager : MonoBehaviour
                 alertText.text = errorBox.errorMessage;
             }
         }));
+        
+        EnableButton();
+    }
+
+    public void TryMatching()
+    {
+        DisableButton();
+        
+        SetMatchingUI();
+        
+        webSocket.StartMatching();
+        
+        _nowMatching = StartCoroutine(MatchingTimer());
+        
+        EnableButton();
+    }
+
+    public void StopMatching()
+    {
+        StopCoroutine(_nowMatching);
+        
+        webSocket.StopMatching();
+        
+        SetPlayUI();
     }
 
     private void Alert(ButtonNeedFunction buttonAction)
@@ -524,6 +583,22 @@ public class MainMenuManager : MonoBehaviour
             case ButtonNeedFunction.Nothing: default:
                 return;
         }
+    }
+
+    private IEnumerator MatchingTimer()
+    {
+        float elapsedTime = 0f;
+
+        while (elapsedTime < 40)
+        {
+            elapsedTime += Time.deltaTime;
+            
+            matchingTimeText.text = $"0:{Mathf.FloorToInt(elapsedTime).ToString()}";
+
+            yield return null;
+        }
+
+        matchingTimeText.text = "matching fail";
     }
     #endregion
 }

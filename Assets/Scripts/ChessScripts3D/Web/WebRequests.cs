@@ -1,14 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Net;
+using ChessScripts3D.Managers;
+using ChessScripts3D.Web;
 using ChessScripts3D.Web.HTTPSchemas;
 using UnityEngine;
-using UnityEngine.InputSystem.HID;
-using UnityEngine.Networking;
+
 
 namespace ChessScripts3D.Web
 {
-    public class WebRequests : MonoBehaviour
+    [RequireComponent(typeof(LoginRequest))]
+    [RequireComponent(typeof(SignUpRequest))]
+    [RequireComponent(typeof(RefreshRequest))]
+    [RequireComponent(typeof(UserInfoRequest))]
+    [RequireComponent(typeof(ErrorCollection))]
+    public class WebRequests : SingleTon<WebRequests>
     {
         [SerializeField] public LoginRequest login;
         [SerializeField] public SignUpRequest sign;
@@ -71,7 +75,7 @@ namespace ChessScripts3D.Web
                     return ButtonNeedFunction.Back;
                     
                 case WebError.NotFound:
-                    print("Url무제 해당 페이지를 찾지 못함");
+                    print("Url문제 해당 페이지를 찾지 못함");
                     return ButtonNeedFunction.Back;
                 
                 case WebError.Refresh:

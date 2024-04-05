@@ -5,23 +5,28 @@ using WarpSquareEngine;
 namespace ChessScripts3D.Socket
 {
     [Serializable]
-    public enum Action
+    public enum SocketAction
     {
         INIT,
         COLOR,
+        MATCHED_USER,
     }
 
     [Serializable]
-    public class GetActionColor
+    public class GetAction
     {
-        public Action action;
-        public string color;
+        public SocketAction action;
+    }
+    
+    [Serializable]
+    public class GetColorAction : GetAction 
+    {
+        public Color color;
     }
 
     [Serializable]
-    public class GetActionInit
+    public class GetInitAction : GetAction
     {
-        public Action action;
         public List<InitData> locationList;
     }
 }

@@ -39,6 +39,7 @@ public class MainMenuEditor : Editor
     private SerializedProperty homePanel;
     private SerializedProperty playPanel;
     private SerializedProperty profilePanel;
+    private SerializedProperty matchingPanel;
     private SerializedProperty alertPanel;
     private SerializedProperty social1Image;
     private SerializedProperty social2Image;
@@ -60,10 +61,16 @@ public class MainMenuEditor : Editor
     private SerializedProperty audioSource;
 
     private SerializedProperty webRequest;
+    private SerializedProperty webSocket;
+
+    private SerializedProperty matchingTimeText;
+
+    private SerializedProperty controlButtons;
+    
     private SerializedProperty loginEmailInput;
     private SerializedProperty loginPasswordInput;
     private SerializedProperty signUpEmailInput;
-    private SerializedProperty signUpIdInput;
+    private SerializedProperty signUpUserNameInput;
     private SerializedProperty signUpPasswordInput;
 
     private SerializedProperty profileUserNameText;
@@ -126,6 +133,7 @@ public class MainMenuEditor : Editor
         homePanel = soTarget.FindProperty("homePanel");
         playPanel = soTarget.FindProperty("playPanel");
         profilePanel = soTarget.FindProperty("profilePanel");
+        matchingPanel = soTarget.FindProperty("matchingPanel");
         alertPanel = soTarget.FindProperty("alertPanel");
         social1Image = soTarget.FindProperty("social1Image");
         social2Image = soTarget.FindProperty("social2Image");
@@ -151,10 +159,16 @@ public class MainMenuEditor : Editor
         profileScoreText = soTarget.FindProperty("profileScoreText");
         
         webRequest = soTarget.FindProperty("webRequest");
+        webSocket = soTarget.FindProperty("webSocket");
+
+        matchingTimeText = soTarget.FindProperty("matchingTimeText"); 
+        
+        controlButtons = soTarget.FindProperty("controlButtons");
+        
         loginEmailInput = soTarget.FindProperty("loginEmailInput");
         loginPasswordInput = soTarget.FindProperty("loginPasswordInput");
         signUpEmailInput = soTarget.FindProperty("signUpEmailInput");
-        signUpIdInput = soTarget.FindProperty("signUpIdInput");
+        signUpUserNameInput = soTarget.FindProperty("signUpUserNameInput");
         signUpPasswordInput = soTarget.FindProperty("signUpPasswordInput");
 
         alertText = soTarget.FindProperty("alertText");
@@ -274,6 +288,7 @@ public class MainMenuEditor : Editor
         EditorGUILayout.PropertyField(homePanel);
         EditorGUILayout.PropertyField(playPanel);
         EditorGUILayout.PropertyField(profilePanel);
+        EditorGUILayout.PropertyField(matchingPanel);
         EditorGUILayout.PropertyField(alertPanel);
         
         EditorGUILayout.PropertyField(social1Image);
@@ -288,7 +303,7 @@ public class MainMenuEditor : Editor
         EditorGUILayout.PropertyField(backgroundImage);
         EditorGUILayout.PropertyField(volumeSlider);
         EditorGUILayout.PropertyField(resolutionDropdown);
-
+        
         EditorGUILayout.PropertyField(audioSource);
 
         EditorGUILayout.PropertyField(profileUserNameText);
@@ -296,10 +311,16 @@ public class MainMenuEditor : Editor
         EditorGUILayout.PropertyField(profileScoreText);
         
         EditorGUILayout.PropertyField(webRequest);
+        EditorGUILayout.PropertyField(webSocket);
+
+        EditorGUILayout.PropertyField(matchingTimeText);
+        
+        EditorGUILayout.PropertyField(controlButtons);
+        
         EditorGUILayout.PropertyField(loginEmailInput);
         EditorGUILayout.PropertyField(loginPasswordInput);
         EditorGUILayout.PropertyField(signUpEmailInput);
-        EditorGUILayout.PropertyField(signUpIdInput);
+        EditorGUILayout.PropertyField(signUpUserNameInput);
         EditorGUILayout.PropertyField(signUpPasswordInput);
 
         EditorGUILayout.PropertyField(alertText);

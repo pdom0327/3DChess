@@ -70,7 +70,7 @@ namespace ChessScripts3D.Managers
             
             var json = JsonUtility.ToJson(data);
             
-            SocketRequest.Instance.WsRequest.Send(json);
+            //SocketRequest.Instance.WsRequest.Send(json);
         }
     }
 }

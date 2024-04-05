@@ -5,42 +5,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3a16e4fa-f44f-42ef-b4d1-88d948fd37ab" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Web/ErrorCollection.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Web/ErrorCollection.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Web/HTTPSchemas/ErrorBox.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Web/HTTPSchemas/ErrorBox.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Web/HTTPSchemas/SignUpRequestDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Web/UserInfoRequest.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Web/UserInfoRequest.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Web/ChessGameWebSocket.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Web/ChessGameWebSocket.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Web/System.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Web/System.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.3DChess/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.3DChess/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GabrielBissonnette/Primo - Main Menu Pack/Essentials/Editor/MainMenuEditor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GabrielBissonnette/Primo - Main Menu Pack/Essentials/Editor/MainMenuEditor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GabrielBissonnette/Primo - Main Menu Pack/Scripts/MainMenuManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GabrielBissonnette/Primo - Main Menu Pack/Scripts/MainMenuManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/HTTPSchemas.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Web/HTTPSchemas.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/HTTPSchemas/LoginRequestDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Web/HTTPSchemas/LoginRequestDto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/HTTPSchemas/LoginRequestDto.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Web/HTTPSchemas/LoginRequestDto.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/HTTPSchemas/SignUpRequestDto.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/HTTPSchemas/SignUpRequestDto.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Web/HTTPSchemas/SignUpRequestDto.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/MainMenuEvents.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/MainMenuEvents/GameMenuEvent.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/MainMenuEvents/GameMenuEvent.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/MainMenuEvents/HeaderEvent.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/MainMenuEvents/HeaderEvent.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/MainMenuEvents/LoginEvent.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/MainMenuEvents/LoginEvent.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/MainMenuEvents/MainSceneEvents.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/MainMenuEvents/MainSceneEvents.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/MainMenuEvents/SignUpEvent.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/MainMenuEvents/SignUpEvent.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/CameraMove.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/CameraMove.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Managers/ClickInputs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Managers/ClickInputs.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Managers/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Managers/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Requests.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Requests/LoginRequest.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Requests/LoginRequest.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Requests/SignUpRequest.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Requests/SignUpRequest.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Socket/GetAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Socket/GetAction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Managers/PieceManager3D.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Managers/PieceManager3D.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Socket/GetAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Web/SocketAction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Socket/GetAction.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Web/SocketAction.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Socket/LocationType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Socket/LocationType.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Socket/SocketRequest.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Socket/SocketRequest.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Web/ErrorCollection.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Web/ErrorCollection.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Web/LoginRequest.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Web/LoginRequest.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Web/RefreshRequest.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Web/RefreshRequest.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Web/SignUpRequest.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Web/SignUpRequest.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Web/UserInfoRequest.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Web/UserInfoRequest.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Web/WebAPIData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Web/WebAPIData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Web/WebRequests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Web/WebRequests.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,6 +48,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/24d45e813e524a99bfb7a145158a7980157a00/d0/299fbb2b/Component.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/38d3cef14c5a4fc9a92de0991034bc1a3d200/13/81a37a72/CloseEventArgs.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/38d3cef14c5a4fc9a92de0991034bc1a3d200/a2/0e998d38/WebSocket.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/56073df97ede4f769c2cc45d546d986d172200/90/24021e33/Object.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/56073df97ede4f769c2cc45d546d986d172200/91/731a4f37/Component.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/4a/a1607c99/List`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/941a8c6d33294d1bbcde07f67192e8abbe00/a6/3226dfa9/UnityWebRequest.cs" root0="SKIP_HIGHLIGHTING" />
@@ -76,6 +70,9 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectId" id="2VHxWTsSOMjrblrtM6fiOVtn8dI" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -127,10 +124,10 @@
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <method v="2" />
     </configuration>
-    <configuration name="Unity 에디터에 연결" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Unity 에디터에 연결" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="27696">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="27696" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -245,6 +242,13 @@
       <workItem from="1711258181702" duration="775000" />
       <workItem from="1711436598519" duration="10977000" />
       <workItem from="1711463302104" duration="864000" />
+      <workItem from="1711970778720" duration="4856000" />
+      <workItem from="1712047090881" duration="10261000" />
+      <workItem from="1712061047323" duration="731000" />
+      <workItem from="1712062059003" duration="3308000" />
+      <workItem from="1712079705724" duration="1992000" />
+      <workItem from="1712215337182" duration="3500000" />
+      <workItem from="1712229674690" duration="10085000" />
     </task>
     <servers />
   </component>
