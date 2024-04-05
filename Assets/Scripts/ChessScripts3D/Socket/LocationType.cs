@@ -15,17 +15,17 @@ namespace ChessScripts3D.Socket
     [Serializable]
     public enum Level
     {
-        QL1 = 0,
+        White = 0,
+        Neutral,
+        Black,
+        
+        QL1,
         QL2,
         QL3,
         QL4,
         QL5,
         QL6,
 
-        White,
-        Neutral,
-        Black,
-    
         KL1,
         KL2,
         KL3,

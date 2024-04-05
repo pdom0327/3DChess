@@ -14,8 +14,9 @@ namespace ChessScripts3D.PieceScripts
         void Start()
         {
             _renderer = GetComponent<MeshRenderer>();
-            _outlineMaterial = _renderer.sharedMaterials[1];
-            _defaultMaterial = _renderer.sharedMaterials[0];
+            var mat = _renderer.sharedMaterials;
+            _outlineMaterial = mat[1];
+            _defaultMaterial = mat[0];
             HighlightOff();
         }
 
@@ -24,14 +25,10 @@ namespace ChessScripts3D.PieceScripts
             _isClick = isClicked;
 
             if (_isClick)
-            {
                 HighlightOn();
-            }
             else
-            {
                 HighlightOff();
-            }
-            
+
             return _isClick;
         }
         
