@@ -5,35 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3a16e4fa-f44f-42ef-b4d1-88d948fd37ab" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Web/ChessGameWebSocket.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Web/ChessGameWebSocket.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Web/System.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Web/System.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.3DChess/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.3DChess/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GabrielBissonnette/Primo - Main Menu Pack/Essentials/Editor/MainMenuEditor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GabrielBissonnette/Primo - Main Menu Pack/Essentials/Editor/MainMenuEditor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GabrielBissonnette/Primo - Main Menu Pack/Scripts/MainMenuManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GabrielBissonnette/Primo - Main Menu Pack/Scripts/MainMenuManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/CameraMove.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/CameraMove.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Managers/ClickInputs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Managers/ClickInputs.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Managers/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Managers/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Managers/PieceManager3D.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Managers/PieceManager3D.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Socket/GetAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Web/SocketAction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Socket/GetAction.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Web/SocketAction.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Socket/LocationType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Socket/LocationType.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Socket/SocketRequest.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Socket/SocketRequest.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Web/ErrorCollection.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Web/ErrorCollection.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Web/LoginRequest.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Web/LoginRequest.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Web/RefreshRequest.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Web/RefreshRequest.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Web/SignUpRequest.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Web/SignUpRequest.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Web/UserInfoRequest.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Web/UserInfoRequest.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Web/WebAPIData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Web/WebAPIData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Web/WebRequests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Web/WebRequests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/URPProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/URPProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,10 +96,10 @@
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <method v="2" />
     </configuration>
-    <configuration name="Unity 에디터에 연결" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="27696">
+    <configuration name="Unity 에디터에 연결" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="27696" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -249,6 +221,7 @@
       <workItem from="1712079705724" duration="1992000" />
       <workItem from="1712215337182" duration="3500000" />
       <workItem from="1712229674690" duration="10085000" />
+      <workItem from="1712316792526" duration="16000" />
     </task>
     <servers />
   </component>
