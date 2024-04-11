@@ -461,7 +461,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7feefdd2f6cc8844e96b834eb2e6b566, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  url: ws://3dchess.shop/game/start
 --- !u!114 &444227297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -917,7 +916,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Color: {r: 0.7216981, g: 0.81294113, b: 1, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -1438,6 +1437,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 584409e7153d404d9b4afcca8525642c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myColor: 0
+  myInfo:
+    userName: 
+    tier: 0
+    score: 0
+  opponentInfo:
+    userName: 
+    tier: 0
+    score: 0
+  isReady: 0
 --- !u!1 &1861561171
 GameObject:
   m_ObjectHideFlags: 0
@@ -1471,7 +1480,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   init: {fileID: 0}
   dataBase: {fileID: 0}
-  color: 
 --- !u!4 &1861561173
 Transform:
   m_ObjectHideFlags: 0

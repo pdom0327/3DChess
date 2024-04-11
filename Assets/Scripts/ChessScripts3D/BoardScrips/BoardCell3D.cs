@@ -1,6 +1,9 @@
 using System;
-using ChessScripts3D.Socket;
 using UnityEngine;
+using WarpSquareEngine;
+using File = ChessScripts3D.Socket.File;
+using Level = ChessScripts3D.Socket.Level;
+using Rank = ChessScripts3D.Socket.Rank;
 
 namespace ChessScripts3D.BoardScrips
 {

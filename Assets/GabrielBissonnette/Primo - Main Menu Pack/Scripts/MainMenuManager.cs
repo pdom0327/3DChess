@@ -320,7 +320,7 @@ public class MainMenuManager : MonoBehaviour
     IEnumerator WaitToLoadLevel()
     {
         yield return new WaitForSeconds(1f);
-
+            
         // Scene Load
         SceneManager.LoadScene(playSceneToLoad);
     }
@@ -592,7 +592,7 @@ public class MainMenuManager : MonoBehaviour
         while (elapsedTime < 300)
         {
             elapsedTime += Time.deltaTime;
-
+            
             if (elapsedTime / 60 >= 1)
             {
                 var minutes = Mathf.FloorToInt(elapsedTime) / 60;
@@ -604,11 +604,19 @@ public class MainMenuManager : MonoBehaviour
             {
                 matchingTimeText.text = $"0:{Mathf.FloorToInt(elapsedTime)}";    
             }
+            
+            if (webSocket.currentState == GameSocketState.Matched)
+            {
+                StartCoroutine(WaitToLoadLevel());
+                StopCoroutine(_nowMatching);
+            }
 
             yield return null;
         }
-
         matchingTimeText.text = "matching fail";
+        
+        StopCoroutine(_nowMatching);
+        webSocket.enabled = false;
     }
     #endregion
 }
