@@ -18,14 +18,13 @@ namespace ChessScripts3D.Web
     {
         public WebSocket socket;
 
-        public GameSocketState currentState;
+        public GameSocketState currentState = GameSocketState.Matching;
 
         private GameManager _gameManager;
 
         private void Start()
         {
             _gameManager = GameManager.Instance;
-            Debug.Log(_gameManager);
             
             socket.OnOpen += (sender, e) => { };
             
@@ -72,6 +71,7 @@ namespace ChessScripts3D.Web
             {
                 var actionObject = JsonUtility.FromJson<GetColorAction>(e.Data);
                 _gameManager.colorDelegate.Invoke(actionObject);
+                currentState = GameSocketState.Matched;
             }
             else if (e.Data.Contains(SocketAction.MATCHED_USER.ToString()))
             {
@@ -81,8 +81,7 @@ namespace ChessScripts3D.Web
             else if (e.Data.Contains(SocketAction.INIT.ToString()))
             {
                 var actionObject = JsonUtility.FromJson<GetInitAction>(e.Data);
-                
-                currentState = GameSocketState.Matched;
+                currentState = GameSocketState.GameInit;
             }
         }
         

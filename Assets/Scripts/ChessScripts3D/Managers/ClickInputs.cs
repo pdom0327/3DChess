@@ -1,9 +1,10 @@
 using ChessScripts3D.BoardScrips;
 using ChessScripts3D.InputSystem;
 using ChessScripts3D.PieceScripts;
-using ChessScripts3D.Socket;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using PieceMove = ChessScripts3D.Socket.PieceMove;
+using Square = WarpSquareEngine.Square;
 
 namespace ChessScripts3D.Managers
 {
@@ -15,7 +16,7 @@ namespace ChessScripts3D.Managers
         private InputFeedback _input;
     
         public Piece3D _clickedPiece;
-        public BoardCell3D _clickedCell;
+        public Square _clickedCell;
 
         void Awake()
         {
@@ -23,7 +24,7 @@ namespace ChessScripts3D.Managers
 
             _input.clicked += () =>
             {
-                Vector3 mousePos = Mouse.current.position.ReadValue();
+                /*Vector3 mousePos = Mouse.current.position.ReadValue();
                 mousePos.z = 100f;
 
                 var cam = Camera.main;
@@ -41,18 +42,18 @@ namespace ChessScripts3D.Managers
                 else if (_clickedPiece && !_clickedCell)
                 {
                     if (!Physics.Raycast(ray, out hit, mousePos.z, cellMask)) return;
-                    _clickedCell = hit.collider.GetComponent<BoardCell3D>();
+                    _clickedCell = hit.collider.GetComponent<Square>();
                     Send();
                     _clickedPiece.CheckIsClick(false);
                     _clickedPiece = null;
                     _clickedCell = null;
-                }
+                }*/
             };
         }
 
         private void Send()
         {
-            var piece = _clickedPiece.pieceData3D;
+            /*var piece = _clickedPiece.pieceData3D;
             var cell = _clickedCell;
             
             var data = new PieceMove()
@@ -68,7 +69,7 @@ namespace ChessScripts3D.Managers
                 toMoveLevel = cell.Level.ToString()
             };
             
-            var json = JsonUtility.ToJson(data);
+            var json = JsonUtility.ToJson(data);*/
             
             //SocketRequest.Instance.WsRequest.Send(json);
         }

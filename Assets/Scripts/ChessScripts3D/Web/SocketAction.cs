@@ -27,6 +27,6 @@ namespace ChessScripts3D.Socket
     [Serializable]
     public class GetInitAction : GetAction
     {
-        public List<InitData> locationList;
+        
     }
 }

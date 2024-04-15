@@ -605,11 +605,7 @@ public class MainMenuManager : MonoBehaviour
                 matchingTimeText.text = $"0:{Mathf.FloorToInt(elapsedTime)}";    
             }
             
-            if (webSocket.currentState == GameSocketState.Matched)
-            {
-                StartCoroutine(WaitToLoadLevel());
-                StopCoroutine(_nowMatching);
-            }
+            if (webSocket.currentState == GameSocketState.Matched) { StopCoroutine(_nowMatching); }
 
             yield return null;
         }

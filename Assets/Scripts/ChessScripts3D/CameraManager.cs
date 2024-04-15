@@ -1,6 +1,7 @@
 using ChessScripts3D.InputSystem;
 using ChessScripts3D.Managers;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using WarpSquareEngine;
 using Color = WarpSquareEngine.Color;
 
@@ -31,12 +32,12 @@ namespace ChessScripts3D
         private Vector3 _homePoint;
         private Quaternion _homeRotate;
 
-        void Start()
+        void Awake()
         {
             _camera = GetComponent<Camera>();
             _camTransform = transform;
             _input = InputFeedback.Instance;
-
+            
             setHomePos += SetInitPos;
         }
     

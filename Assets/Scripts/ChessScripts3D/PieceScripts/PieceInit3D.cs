@@ -29,7 +29,7 @@ namespace ChessScripts3D.PieceScripts
             if (color == "White") ClickInputs.Instance.pieceMask = LayerMask.GetMask("WhitePiece");   
         }
         
-        public void InitPiece(List<InitData> initList, PieceDataBase3D dataBase3D)
+        /*public void InitPiece(List<InitData> initList, PieceDataBase3D dataBase3D)
         {
             foreach (var data in initList)
             {
@@ -47,8 +47,8 @@ namespace ChessScripts3D.PieceScripts
                     pieceData.Rank = Enum.Parse<Rank>(data.rank);
                     pieceData.Level = Enum.Parse<Level>(data.level);
             
-                    var boardCellList = BoardManager3D.Instance.board.boardCellList;
-                    foreach (var cell in boardCellList)
+                    //var boardCellList = BoardManager3D.Instance.board.boardCellList;
+                    /*foreach (var cell in boardCellList)
                     {
                         if (pieceData.File == cell.File &&
                             pieceData.Rank == cell.Rank &&
@@ -56,7 +56,7 @@ namespace ChessScripts3D.PieceScripts
                         {
                             piece.transform.position = cell.transform.position;
                         }
-                    }
+                    }#1#
                     dataBase3D.pieceList.Add(piece);
                 }
             }
@@ -122,6 +122,6 @@ namespace ChessScripts3D.PieceScripts
             
             print("피스가 존재하지 않습니다.");
             return null;
-        }
+        }*/
     }
 }

@@ -3,6 +3,7 @@ using ChessScripts3D.Socket;
 using ChessScripts3D.Web;
 using ChessScripts3D.Web.HTTPSchemas;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using WarpSquareEngine;
 using Color = WarpSquareEngine.Color;
 
@@ -28,13 +29,15 @@ namespace ChessScripts3D.Managers
         [Header("Limit Playing")]
         public bool isReady;
         
-        public Game game;
+        public Game game = new Game();
         
         
         private ChessGameWebSocket _ws;
 
-        private CameraManager _cameraManager; 
-
+        private CameraManager _cameraManager;
+        private BoardManager3D _boardManager;
+        private PieceManager3D _pieceManager;
+        
         private void Awake()
         {
             _ws = ChessGameWebSocket.Instance;
@@ -43,9 +46,6 @@ namespace ChessScripts3D.Managers
             {
                 colorDelegate = SetMyColor;
                 opponentInfoDelegate = SetOpponentInfo;
-        
-                Debug.Log(myColor);
-                Debug.Log(opponentInfo);
             }
             else
             {
@@ -53,15 +53,30 @@ namespace ChessScripts3D.Managers
             }
         }
 
-        private void SetMyColor(GetColorAction action)
+        private void Update()
         {
-            myColor = action.color;
-            
-            // todo : 인스턴스 여기말고 다른곳으로 findObjects 에러 발생함
-            CameraManager.Instance.setHomePos.Invoke(myColor);
+
+            if (_ws.currentState != GameSocketState.GameInit) return;
+            SceneManager.LoadScene("3DChessGameScene");
+            SceneManager.sceneLoaded -= LoadSceneInit;
+            SceneManager.sceneLoaded += LoadSceneInit;
         }
+        
+        private void SetMyColor(GetColorAction action) { myColor = action.color; }
 
         private void SetOpponentInfo(UserInfoDto info) { opponentInfo = info; }
+
+        private void LoadSceneInit(Scene scene, LoadSceneMode mode)
+        {
+            _cameraManager = CameraManager.Instance;
+            _boardManager = BoardManager3D.Instance;
+            _pieceManager = PieceManager3D.Instance;
+            
+            
+            
+            _cameraManager.setHomePos.Invoke(myColor);
+            _ws.currentState = GameSocketState.InGamePlaying;
+        }
         
     }
 }
