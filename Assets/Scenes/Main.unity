@@ -4785,6 +4785,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 503792596}
     - target: {fileID: 2525186461702100109, guid: 4a9b89beba39ec34b82c7bfb1c176cc0, type: 3}
+      propertyPath: playSceneToLoad
+      value: 3DChessGameScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 2525186461702100109, guid: 4a9b89beba39ec34b82c7bfb1c176cc0, type: 3}
       propertyPath: profileTierText
       value: 
       objectReference: {fileID: 675789164}
@@ -4816,6 +4820,10 @@ PrefabInstance:
       propertyPath: signUpPasswordInput
       value: 
       objectReference: {fileID: 984156213}
+    - target: {fileID: 2525186461702100109, guid: 4a9b89beba39ec34b82c7bfb1c176cc0, type: 3}
+      propertyPath: signUpUserNameInput
+      value: 
+      objectReference: {fileID: 371562574}
     - target: {fileID: 2525186461702100109, guid: 4a9b89beba39ec34b82c7bfb1c176cc0, type: 3}
       propertyPath: controlButtons.Array.size
       value: 5
@@ -7783,12 +7791,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1192486620}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: db7bddf2ee0b4021b524095753a09c0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isMatching: 0
 --- !u!1 &1203481242
 GameObject:
   m_ObjectHideFlags: 0

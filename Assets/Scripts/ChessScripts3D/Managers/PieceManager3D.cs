@@ -12,8 +12,6 @@ namespace ChessScripts3D.Managers
         public PieceInit3D init;
         public PieceDataBase3D dataBase;
 
-        private List<InitData> initData;
-
         private void Awake()
         {
             init = GetComponent<PieceInit3D>();

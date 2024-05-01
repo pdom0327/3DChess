@@ -12,9 +12,6 @@ namespace ChessScripts3D.Web
         
         private const string AuthKey = "Authorization";
         private const string RefreshKey = "refreshToken";
-        
-        public const bool matchStart = true;
-        public const bool matchEnd = false;
 
         public static string GetAuthKey()
         {

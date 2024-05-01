@@ -1,39 +1,44 @@
-﻿using System;
-using System.Diagnostics.Tracing;
-using ChessScripts3D.Managers;
+﻿using ChessScripts3D.Managers;
 using ChessScripts3D.Socket;
 using ChessScripts3D.Web.HTTPSchemas;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using WebSocketSharp;
 
 namespace ChessScripts3D.Web
 {
+    public enum GameSocketState
+    {
+        Matching,
+        Matched,
+        GameInit,
+        InGamePlaying,
+    }
+    
     public class ChessGameWebSocket : SingleTon<ChessGameWebSocket>
     {
-        public bool isMatching;
-        
         public WebSocket socket;
-        
-        void Update()
+
+        public GameSocketState currentState = GameSocketState.Matching;
+
+        private GameManager _gameManager;
+
+        private void Start()
         {
-            if ( !isMatching ) return ;
+            _gameManager = GameManager.Instance;
             
-            var auth = WebRequests.Instance.GetAuthorization();
-
-            socket = new WebSocket(WebAPIData.SocketUrl + $"/game/start?token={auth}");
+            socket.OnOpen += (sender, e) => { };
             
-            socket.OnOpen += (sender, e) => { Debug.Log("hello"); };
-
             socket.OnMessage += (sender, e) =>
             {
+                Debug.Log(e.Data);
+                
                 SetUpAction(e);
             };
             
             socket.OnClose += (sender, e) => {
                 if (e.Code == 1000)
                 {
-                    StopMatching();
+                    socket.Close();
                 }
             };
             
@@ -42,39 +47,42 @@ namespace ChessScripts3D.Web
                     Debug.LogError("Exception: " + e.Exception);
                 }
             };
-                
-            socket.Connect();
-
-            EndMatching();
         }
 
-        public void StartMatching() { isMatching = WebAPIData.matchStart; }
-
-        private void EndMatching() { isMatching = WebAPIData.matchEnd; }
-
-        public void StopMatching()
+        public void OnEnable()
         {
-            EndMatching();
+            currentState = GameSocketState.Matching;
+            
+            var auth = WebRequests.Instance.GetAuthorization();
+
+            socket = new WebSocket(WebAPIData.SocketUrl + $"/game/start?token={auth}");
+
+            socket.Connect();
+        }
+
+        public void OnDisable()
+        {
             socket.Close();
         }
 
-        public void SetUpAction(MessageEventArgs e)
+        private void SetUpAction(MessageEventArgs e)
         {
-            var gameManager = GameManager.Instance;
-
             if (e.Data.Contains(SocketAction.COLOR.ToString()))
             {
                 var actionObject = JsonUtility.FromJson<GetColorAction>(e.Data);
+                _gameManager.colorDelegate.Invoke(actionObject);
+                currentState = GameSocketState.Matched;
             }
             else if (e.Data.Contains(SocketAction.MATCHED_USER.ToString()))
             {
                 var actionObject = JsonUtility.FromJson<UserInfoDto>(e.Data);
+                _gameManager.opponentInfoDelegate.Invoke(actionObject);
             }
             else if (e.Data.Contains(SocketAction.INIT.ToString()))
             {
                 var actionObject = JsonUtility.FromJson<GetInitAction>(e.Data);
+                currentState = GameSocketState.GameInit;
             }
-                
         }
         
     }
