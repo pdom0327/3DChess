@@ -11,8 +11,6 @@ namespace ChessScripts3D.BoardScrips
         {
             level = lev;
             transform.position = GetWorldSpaceTransform();
-
-            Game s = new Game();
         }
 
         public Vector3 GetWorldSpaceTransform()

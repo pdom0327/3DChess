@@ -31,9 +31,9 @@ namespace ChessScripts3D.Managers
         
         public Game game = new Game();
         
-        
         private ChessGameWebSocket _ws;
-
+        
+        [Header("Managers")]
         private CameraManager _cameraManager;
         private BoardManager3D _boardManager;
         private PieceManager3D _pieceManager;
@@ -55,6 +55,16 @@ namespace ChessScripts3D.Managers
 
         private void Update()
         {
+            /*foreach (var piece in game.GetPiecesWithBoardType(BoardType.White))
+            {
+                Debug.Log(piece.GetChar() + " " + piece);
+            }*/
+
+            Debug.Log( game.GetBoards()[0].GetLevel()); // 레벨 < = >보드타입 매칭 
+            game.PushBoardMove(new BoardMove(Level.White, Level.Kl3, new Option<PieceType>()));
+            Debug.Log( game.GetBoards()[0].GetLevel());
+            
+            // todo : 피스 불러오기 
 
             if (_ws.currentState != GameSocketState.GameInit) return;
             SceneManager.LoadScene("3DChessGameScene");
@@ -71,10 +81,9 @@ namespace ChessScripts3D.Managers
             _cameraManager = CameraManager.Instance;
             _boardManager = BoardManager3D.Instance;
             _pieceManager = PieceManager3D.Instance;
-            
-            
-            
+
             _cameraManager.setHomePos.Invoke(myColor);
+
             _ws.currentState = GameSocketState.InGamePlaying;
         }
         

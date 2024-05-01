@@ -1,18 +1,16 @@
 using ChessScripts3D.InputSystem;
-using ChessScripts3D.Managers;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using WarpSquareEngine;
 using Color = WarpSquareEngine.Color;
 
-namespace ChessScripts3D
+namespace ChessScripts3D.Managers
 {
     class CameraManager : SingleTon<CameraManager>
     {
         public delegate void SetHomePos(Color color);
         public SetHomePos setHomePos;
         
-        private InputFeedback _input; 
+        private InputFeedback _input;
+        [SerializeField]public Animator fadeAnimation;
     
         [SerializeField] private float sensitivity = 5.0f;
         
@@ -34,10 +32,14 @@ namespace ChessScripts3D
 
         void Awake()
         {
+            fadeAnimation ??= transform.GetChild(0).GetComponent<Animator>();
+            
             _camera = GetComponent<Camera>();
             _camTransform = transform;
+            
             _input = InputFeedback.Instance;
             
+            setHomePos -= SetInitPos;
             setHomePos += SetInitPos;
         }
     
@@ -99,9 +101,9 @@ namespace ChessScripts3D
             Vector3 moveDirection;
             
             if ( camAngleY is > 360 or < 180)
-                moveDirection = Quaternion.Euler(0, _camTransform.eulerAngles.y, 0) * new Vector3(-camFocusZ, _movePos.y, camFocusX);
+                moveDirection = Quaternion.Euler(0, camAngleY, 0) * new Vector3(-camFocusZ, _movePos.y, camFocusX);
             else
-                moveDirection = Quaternion.Euler(0, _camTransform.eulerAngles.y, 0) * new Vector3(camFocusZ, _movePos.y, -camFocusX);
+                moveDirection = Quaternion.Euler(0, camAngleY, 0) * new Vector3(camFocusZ, _movePos.y, -camFocusX);
 
             transform.position += moveDirection.normalized * (sensitivity * Time.deltaTime);
         }

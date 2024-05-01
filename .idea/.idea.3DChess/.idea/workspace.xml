@@ -5,34 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3a16e4fa-f44f-42ef-b4d1-88d948fd37ab" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/BoardScrips/AttackBoard3D.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/BoardScrips/AttackBoard3D.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/BoardScrips/IBoard3D.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/BoardScrips/MainBoard3D.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/BoardScrips/MainBoard3D.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.3DChess/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.3DChess/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GabrielBissonnette/Primo - Main Menu Pack/Scripts/MainMenuManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GabrielBissonnette/Primo - Main Menu Pack/Scripts/MainMenuManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Board/BoardCell.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Board/BoardCell.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Board/BoardCell3D.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Board/BoardCell3D.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/BoardScrips/Board3D.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/BoardScrips/Board3D.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/BoardScrips/IBoard3D.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/BoardScrips/BoardCell3D.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/BoardScrips/BoardCell3D.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/CameraManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/CameraManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Managers/BoardManager3D.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Managers/BoardManager3D.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Managers/ClickInputs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Managers/ClickInputs.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/warp_square_engine.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/warp_square_engine.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/warp_square_engine.dll.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/warp_square_engine.dll.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/3DChessGameScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/3DChessGameScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/BoardScrips/MainBoard3D.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/BoardScrips/MainBoard3D.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/BoardScrips/Square3D.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/BoardScrips/Square3D.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/CameraManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Managers/CameraManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/CameraManager.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Managers/CameraManager.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Managers/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Managers/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Managers/PieceManager3D.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Managers/PieceManager3D.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/PieceScripts/PieceData3D.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/PieceScripts/PieceData3D.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/PieceScripts/PieceInit3D.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/PieceScripts/PieceInit3D.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Socket/InitData.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Socket/InitData.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Socket/LocationType.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Socket/LocationType.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Web/ChessGameWebSocket.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Web/ChessGameWebSocket.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Web/SocketAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ChessScripts3D/Web/SocketAction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WarpSquareEngine.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WarpSquareEngine.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WarpSquareEngine/WarpSquareEngine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WarpSquareEngine/WarpSquareEngine.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WarpSquareEngine/WarpSquareEngine.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WarpSquareEngine/WarpSquareEngine.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WarpSquareEngine/WarpSquareEngine.csproj.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -265,6 +250,8 @@
       <workItem from="1713071253558" duration="8657000" />
       <workItem from="1713098695748" duration="2321000" />
       <workItem from="1713178010055" duration="7612000" />
+      <workItem from="1713261715555" duration="4089000" />
+      <workItem from="1714461261376" duration="1000000" />
     </task>
     <servers />
   </component>
